@@ -34,3 +34,21 @@ D:\Akash\Property Tax\Models.Customize\bin\Release\Microsoft.AspNet.Identity.Cor
 D:\Akash\Property Tax\Models.Customize\obj\Release\Models.Customize.csprojResolveAssemblyReference.cache
 D:\Akash\Property Tax\Models.Customize\obj\Release\Models.Customize.dll
 D:\Akash\Property Tax\Models.Customize\obj\Release\Models.Customize.pdb
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Models.Customize.dll.config
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Models.Customize.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Models.Customize.pdb
+D:\Akash\PropertyTax\Models.Customize\bin\Release\EntityFramework.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\EntityFramework.SqlServer.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Infrastructure.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Models.BasicSetup.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\Akash\PropertyTax\Models.Customize\bin\Release\EntityFramework.xml
+D:\Akash\PropertyTax\Models.Customize\bin\Release\EntityFramework.SqlServer.xml
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Infrastructure.pdb
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Models.BasicSetup.pdb
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Akash\PropertyTax\Models.Customize\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\Akash\PropertyTax\Models.Customize\obj\Release\Models.Customize.csprojResolveAssemblyReference.cache
+D:\Akash\PropertyTax\Models.Customize\obj\Release\Models.Customize.dll
+D:\Akash\PropertyTax\Models.Customize\obj\Release\Models.Customize.pdb

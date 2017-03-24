@@ -1205,6 +1205,78 @@ function InitializeFocus() {
     }
 }
 
+//For managing document attachment modal page
+$(function () {
+    $.ajaxSetup({ cache: false });
+
+    $("a[data-modaltrigger='DocumentAttachment']").on("click", function (e) {
+
+        var DocTypeId = $('.DocType_Id').val();
+        var Id = $($('table.grid-table .grid-row.grid-row-selected').get(0)).find('.Header_Id').text();
+
+        if (Id && Id > 0 && DocTypeId && DocTypeId > 0) {
+            $(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+            var url = '/DocumentAttachment/AttachDocument?DocId=' + Id + '&DocTypeId=' + DocTypeId;
+            $('#myModalContent').load(url, function () {
+                $('#myModal').modal({
+                    backdrop: 'static',
+                    keyboard: true
+                }, 'show');
+
+                bindDocumentAttachmentForm(this);
+            });
+        }
+        return false;
+    });
+});
+
+function bindDocumentAttachmentForm(dialog) {
+    $('input:file', '#modformDocAttchmt').change(function () {
+
+        var form = $('#modformDocAttchmt')[0];
+        var data = new FormData(form);
+
+        $.ajax({
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function (evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = evt.loaded / evt.total;
+                        //Do something with upload progress here
+                        $('.uploadPerc').css('display', 'block')
+                        if (percentComplete < 1) {
+                            $('#uloadPerc').text((percentComplete * 100).toFixed(2) + "%");
+                        }
+                        else {
+                            $('.uploadPerc').css('display', 'none')
+                        }
+                    }
+                }, false);
+
+                return xhr;
+            },
+            url: form.action,
+            type: form.method,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (result) {
+                if (result.success) {
+                    $('#myModal').modal('hide');
+                    //Refresh
+                    // alert('this.action');
+                    location.reload();
+                } else {
+                    $('#myModalContent').html(result);
+                    bindDocumentAttachmentForm();
+                }
+            }
+        });
+
+        return false;
+    });
+}
+
 //$(document).bind("keyup keydown", function (e) {
 //    if (e.ctrlKey && e.keyCode == 80) {
 //        alert('print match');

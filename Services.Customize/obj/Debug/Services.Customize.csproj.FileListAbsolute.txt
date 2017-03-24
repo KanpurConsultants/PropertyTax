@@ -79,3 +79,42 @@ D:\Akash\Property Tax\Services.Customize\bin\Debug\Models.Reports.pdb
 D:\Akash\Property Tax\Services.Customize\bin\Debug\itextsharp.dll
 D:\Akash\Property Tax\Services.Customize\bin\Debug\itextsharp.xml
 D:\Akash\Property Tax\Services.Customize\bin\Debug\DocumentPrint.dll
+D:\Akash\PropertyTax\Services.Customize\obj\Debug\Services.Customize.csprojResolveAssemblyReference.cache
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.Customize.dll.config
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.Customize.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.Customize.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\AutoMapper.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\DocumentPrint.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\EntityFramework.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\EntityFramework.SqlServer.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Infrastructure.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\itextsharp.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Logger.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.BasicSetup.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.Customize.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\ProjLib.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.BasicSetup.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.Reports.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Surya.Planning.Data.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\TimePlanValidator.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.Reports.dll
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Surya.Planning.Data.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.Customize.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\AutoMapper.xml
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\EntityFramework.xml
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\EntityFramework.SqlServer.xml
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Infrastructure.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\itextsharp.xml
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Logger.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.BasicSetup.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\ProjLib.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.BasicSetup.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.Reports.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\TimePlanValidator.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.Reports.pdb
+D:\Akash\PropertyTax\Services.Customize\obj\Debug\Services.Customize.dll
+D:\Akash\PropertyTax\Services.Customize\obj\Debug\Services.Customize.pdb

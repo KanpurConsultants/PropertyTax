@@ -253,6 +253,15 @@
 
         })
 
+
+        if ($("#TaxableArea").val() > 0)
+        {
+            $('#ARV').attr('readonly','true');
+        }
+        else{
+            $('#ARV').removeAttr('readonly');
+        }
+
         var DocID = $('#PersonId', '.modal-body').val();
 
 
@@ -389,7 +398,7 @@
                     success: function (data) {
                         if (data != null)
                         {
-                            $("#ARV").val(data.value);
+                            $("#ARV").val(data);
                         }
                         else{
                             $("#ARV").val(0);
