@@ -72,7 +72,6 @@ D:\Akash\Property Tax\Data\bin\Debug\TimePlanValidator.pdb
 D:\Akash\Property Tax\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\Akash\Property Tax\Data\obj\Debug\Surya.Planning.Data.dll
 D:\Akash\Property Tax\Data\obj\Debug\Surya.Planning.Data.pdb
-D:\Akash\PropertyTax\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\Akash\PropertyTax\Data\bin\Debug\Surya.Planning.Data.dll.config
 D:\Akash\PropertyTax\Data\bin\Debug\Surya.Planning.Data.dll
 D:\Akash\PropertyTax\Data\bin\Debug\Surya.Planning.Data.pdb
@@ -107,5 +106,6 @@ D:\Akash\PropertyTax\Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\Akash\PropertyTax\Data\bin\Debug\Models.BasicSetup.pdb
 D:\Akash\PropertyTax\Data\bin\Debug\Newtonsoft.Json.xml
 D:\Akash\PropertyTax\Data\bin\Debug\TimePlanValidator.pdb
+D:\Akash\PropertyTax\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\Akash\PropertyTax\Data\obj\Debug\Surya.Planning.Data.dll
 D:\Akash\PropertyTax\Data\obj\Debug\Surya.Planning.Data.pdb

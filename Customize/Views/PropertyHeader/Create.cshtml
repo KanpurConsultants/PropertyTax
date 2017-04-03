@@ -90,7 +90,7 @@
                     </a>
                     <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
                         <li><a id="DocHistory" data-modal="" href="@Url.Action("GetHistory", "LogHistory", new { Ids = Model.PersonID, DocTypeId = Model.DocTypeId })"><span class="glyphicon glyphicon-user"> </span> History</a></li>
-                        <li><a href="@Url.Action("Email", "PropertyHeader")"><span class="glyphicon glyphicon-envelope"> </span> Email</a></li>
+                        @*<li><a href="@Url.Action("Email", "PropertyHeader")"><span class="glyphicon glyphicon-envelope"> </span> Email</a></li>*@
                         <li role="separator" class="divider"></li>
                         <li><a href="@Url.Action("Report", "PropertyHeader")"><span class="glyphicon glyphicon-th"> </span> Report</a></li>
                     </ul>
@@ -588,7 +588,7 @@
 
         CustomSelectFunction($("#ParentId"), '/PropertyHeader/GetProperty', '/ComboHelpList/SetSinglePerson', ' ', false);
         CustomSelectFunction($("#GodownId"), '/ComboHelpList/GetGodown', '/ComboHelpList/SetSingleGodown', ' ', false, 0);
-        CustomSelectFunction($("#BinLocationId"), '/ComboHelpList/GetBinLocation', '/ComboHelpList/SetSingleBinLocation', ' ', false, 0);
+        CustomSelectFunction($("#BinLocationId"), '/ComboHelpList/GetBinLocation', '/ComboHelpList/SetSingleBinLocation', ' ', false, 0,0);
         CustomSelectFunction($("#AreaId"), '/ComboHelpList/GetArea', '/ComboHelpList/SetSingleArea', ' ', false, 0);
         CustomSelectFunction($("#CasteId"), '/ComboHelpList/GetCaste', '/ComboHelpList/SetSingleCaste', ' ', false, 0);
         CustomSelectFunction($("#ReligionId"), '/ComboHelpList/GetReligion', '/ComboHelpList/SetSingleReligion', ' ', false, 0);
@@ -606,7 +606,10 @@
         AddFields();
 
 
-
+        $("#GodownId").change(function(){
+            $("#BinLocationId").select2("data", { id: null, text: null });
+            CustomSelectFunction($("#BinLocationId"), '/ComboHelpList/GetBinLocation', '/ComboHelpList/SetSingleBinLocation', ' ', false, 0,$("#GodownId").val());
+        });
 
     });
 

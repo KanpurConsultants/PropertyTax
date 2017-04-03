@@ -182,7 +182,7 @@ namespace Services.Customize
                         ReceivedAmount = LedgerLineTab.Amount,
                         PaymentModeId = (int)LedgerLineTab.PaymentModeId,
                         AgentId = LedgerLineTab.AgentId,
-                        ReferenceLedgerAccountId = LedgerLineTab.ReferenceDocLineId,
+                        ReferenceLedgerAccountId = LedgerLineTab.ReferenceLedgerAccountId,
                         ChqNo = LedgerLineTab.ChqNo,
                         ChqDate = LedgerLineTab.ChqDate,
                         Status = p.Status,
@@ -436,25 +436,36 @@ namespace Services.Customize
             var Ledger = _unitOfWork.Repository<Ledger>().Query().Get().Where(m => m.LedgerHeaderId == LedgerHeader.LedgerHeaderId).ToList();
 
 
-
+            List<int> LedgerAdjList = new List<int>();
             foreach (var item in Ledger)
             {
                 var LedgerAdj1 = _unitOfWork.Repository<LedgerAdj>().Query().Get().Where(m => m.DrLedgerId == item.LedgerId).ToList();
 
                 foreach (var item2 in LedgerAdj1)
                 {
-                    item2.ObjectState = Model.ObjectState.Deleted;
-                    _unitOfWork.Repository<LedgerAdj>().Delete(item2);
+                    if (!LedgerAdjList.Contains(item2.LedgerAdjId))
+                    {
+                        item2.ObjectState = Model.ObjectState.Deleted;
+                        _unitOfWork.Repository<LedgerAdj>().Delete(item2);
+                        LedgerAdjList.Add(item2.LedgerAdjId);
+                    }
                 }
 
                 var LedgerAdj2 = _unitOfWork.Repository<LedgerAdj>().Query().Get().Where(m => m.CrLedgerId == item.LedgerId).ToList();
 
                 foreach (var item3 in LedgerAdj2)
                 {
-                    item3.ObjectState = Model.ObjectState.Deleted;
-                    _unitOfWork.Repository<LedgerAdj>().Delete(item3);
+                    if (!LedgerAdjList.Contains(item3.LedgerAdjId))
+                    {
+                        item3.ObjectState = Model.ObjectState.Deleted;
+                        _unitOfWork.Repository<LedgerAdj>().Delete(item3);
+                        LedgerAdjList.Add(item3.LedgerAdjId);
+                    }
                 }
+            }
 
+            foreach (var item in Ledger)
+            {
                 item.ObjectState = Model.ObjectState.Deleted;
                 _unitOfWork.Repository<Ledger>().Delete(item);
             }

@@ -42,6 +42,7 @@ namespace Services.Customize
         ComboBoxPagedResult GetPersonWithDocType(string searchTerm, int pageSize, int pageNum, int DocTypeId);
         ComboBoxPagedResult GetPerson(string searchTerm, int pageSize, int pageNum);
         ComboBoxPagedResult GetBinLocation(string searchTerm, int pageSize, int pageNum);
+        ComboBoxPagedResult GetBinLocation(string searchTerm, int pageSize, int pageNum, int filterid);
         ComboBoxResult GetBinLocationById(int Id);
         ComboBoxPagedResult GetArea(string searchTerm, int pageSize, int pageNum);
         ComboBoxResult GetAreaById(int Id);
@@ -228,6 +229,10 @@ namespace Services.Customize
         public ComboBoxPagedResult GetBinLocation(string searchTerm, int pageSize, int pageNum)
         {
             return new BinLocationService(_unitOfWork).GetList(searchTerm, pageSize, pageNum);
+        }
+        public ComboBoxPagedResult GetBinLocation(string searchTerm, int pageSize, int pageNum, int filterid)
+        {
+            return new BinLocationService(_unitOfWork).GetList(searchTerm, pageSize, pageNum, filterid);
         }
         public ComboBoxResult GetBinLocationById(int Id)
         {

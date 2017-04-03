@@ -25,6 +25,7 @@ namespace Customize.Controllers
         IPropertyLineService _PropertyLineService;
         IPropertyHeaderService _PropertyHeaderService;
         IJobOrderSettingsService _jobOrderSettingsService;
+        IDiscountTypeService _DiscountTypeService;
         IExceptionHandler _exception;
         IDocumentValidation _validator;
 
@@ -32,12 +33,13 @@ namespace Customize.Controllers
         string ExceptionMsg = "";
         bool Continue = true;
 
-        public PropertyLineController(IPropertyLineService PropertyLineService, IExceptionHandler exec, IPropertyHeaderService PropertyHeaderService, IJobOrderSettingsService jobOrderSettingsServ
+        public PropertyLineController(IPropertyLineService PropertyLineService, IExceptionHandler exec, IPropertyHeaderService PropertyHeaderService, IJobOrderSettingsService jobOrderSettingsServ, IDiscountTypeService DiscountTypeService
             , IDocumentValidation validator)
         {
             _PropertyLineService = PropertyLineService;
             _PropertyHeaderService = PropertyHeaderService;
             _jobOrderSettingsService = jobOrderSettingsServ;
+            _DiscountTypeService = DiscountTypeService;
             _exception = exec;
             _validator = validator;
 
@@ -91,6 +93,9 @@ namespace Customize.Controllers
             s.PersonId = H.PersonID;
             ViewBag.Status = H.Status;
 
+            DiscountType D = _DiscountTypeService.Find("NA");
+            s.DiscountTypeId = D.DiscountTypeId;
+            s.DiscountRate = D.Rate;
 
 
             PrepareViewBag(s);
@@ -114,8 +119,8 @@ namespace Customize.Controllers
 
 
 
-            if (_PropertyLineService.IsDuplicateLine(svm.PersonId,svm.ProductId, svm.Dimension1Id, svm.ProductBuyerId))
-                ModelState.AddModelError("ProductId", "Product is already entered in Property.");
+            //if (_PropertyLineService.IsDuplicateLine(svm.PersonId,svm.ProductId, svm.Dimension1Id, svm.ProductBuyerId))
+            //    ModelState.AddModelError("ProductId", "Product is already entered in Property.");
 
             ViewBag.Status = temp.Status;
 

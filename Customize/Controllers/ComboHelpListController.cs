@@ -212,11 +212,11 @@ namespace Customize.Controllers
             return Json(_cusComboHelpListService.GetPersonById(Ids));
         }
 
-        public ActionResult GetBinLocation(string searchTerm, int pageSize, int pageNum)
+        public ActionResult GetBinLocation(string searchTerm, int pageSize, int pageNum, int filter)
         {
             return new JsonpResult
             {
-                Data = _cusComboHelpListService.GetBinLocation(searchTerm, pageSize, pageNum),
+                Data = _cusComboHelpListService.GetBinLocation(searchTerm, pageSize, pageNum, filter),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }

@@ -446,6 +446,10 @@ namespace Customize.Controllers
 
             CollectionViewModel s = _CollectionService.GetCollection(id);
 
+            var settings = _CollectionSettingsService.GetCollectionSettingsForDocument(s.DocTypeId);
+            s.CollectionSettings = Mapper.Map<CollectionSettings, CollectionSettingsViewModel>(settings);
+
+
 
             PrepareViewBag(s.DocTypeId);
             if (s == null)
@@ -509,6 +513,7 @@ namespace Customize.Controllers
             }
             #endregion
 
+
             return RedirectToAction("Detail", new { id = id, IndexType = IndexType, transactionType = string.IsNullOrEmpty(TransactionType) ? "submit" : TransactionType });
         }
 
@@ -520,6 +525,7 @@ namespace Customize.Controllers
 
             LedgerHeader pd = _CollectionService.Find(Id);
 
+            CollectionViewModel s = _CollectionService.GetCollection(Id);
 
             if (ModelState.IsValid)
             {
@@ -535,14 +541,14 @@ namespace Customize.Controllers
                     {
                         string message = _exception.HandleException(ex);
                         TempData["CSEXC"] += message;
-                        return RedirectToAction("Index", new { id = pd.DocTypeId });
+                        return RedirectToAction("Index", new { id = pd.DocTypeId, PersonId = s.PersonId });
                     }
                 }
                 else
-                    return RedirectToAction("Index", new { id = pd.DocTypeId, IndexType = IndexType }).Warning("Record can be submitted by user " + pd.ModifiedBy + " only.");
+                    return RedirectToAction("Index", new { id = pd.DocTypeId, PersonId = s.PersonId, IndexType = IndexType }).Warning("Record can be submitted by user " + pd.ModifiedBy + " only.");
             }
 
-            return RedirectToAction("Index", new { id = pd.DocTypeId, IndexType = IndexType });
+            return RedirectToAction("Index", new { id = pd.DocTypeId, PersonId = s.PersonId, IndexType = IndexType });
         }
 
 
