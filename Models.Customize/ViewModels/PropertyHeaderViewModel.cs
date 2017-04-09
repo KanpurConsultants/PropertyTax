@@ -23,18 +23,22 @@ namespace Models.Customize.ViewModels
         public string GISId { get; set; }
         public int GodownId { get; set; }
         public string GodownName { get; set; }
-        public int BinLocationId { get; set; }
+        public int? BinLocationId { get; set; }
         public string BinLocationName { get; set; }
+        public int PersonAddressId { get; set; }
+        public string Address { get; set; }
+        public string ZipCode { get; set; }
         public string HouseNo { get; set; }
-        public int AreaId { get; set; }
+        public string OldHouseNo { get; set; }
+        public int? AreaId { get; set; }
         public string AreaName { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
-        public int CasteId { get; set; }
-        public int ReligionId { get; set; }
-        public int PersonRateGroupId { get; set; }
+        public int? CasteId { get; set; }
+        public int? ReligionId { get; set; }
+        public int? PersonRateGroupId { get; set; }
         public string DivisionIds  { get; set; }
         public string SiteIds { get; set; }
         public Boolean IsActive { get; set; }
@@ -52,6 +56,8 @@ namespace Models.Customize.ViewModels
         public string ModifiedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public int Status { get; set; }
+
+        public List<DocumentTypeAttributeViewModel> DocumentTypeAttributes { get; set; }
     }
 
     public class PropertyHeaderListViewModel

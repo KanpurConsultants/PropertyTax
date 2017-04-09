@@ -243,6 +243,7 @@ namespace Customize.App_Start
             m.CreateMap<JobOrderHeaderViewModel, DocumentUniqueId>();
             m.CreateMap<RecipeHeaderViewModel, DocumentUniqueId>();
             m.CreateMap<PropertyHeaderViewModel, DocumentUniqueId>();
+
             m.CreateMap<PaymentModeViewModel, DocumentUniqueId>();
             m.CreateMap<CollectionViewModel, DocumentUniqueId>();
             m.CreateMap<DyeingViewModel, DocumentUniqueId>();
@@ -281,6 +282,8 @@ namespace Customize.App_Start
             m.CreateMap<PropertyHeaderViewModel, Person>();
             m.CreateMap<BusinessEntity, PropertyHeaderViewModel>();
             m.CreateMap<PropertyHeaderViewModel, BusinessEntity>();
+            m.CreateMap<PersonAddress, PropertyHeaderViewModel>();
+            m.CreateMap<PropertyHeaderViewModel, PersonAddress>();
             m.CreateMap<LedgerAccount, PropertyHeaderViewModel>();
             m.CreateMap<PropertyHeaderViewModel, LedgerAccount>();
             m.CreateMap<PersonExtended, PropertyHeaderViewModel>();
@@ -295,6 +298,7 @@ namespace Customize.App_Start
             m.CreateMap<CollectionViewModel, LedgerLine>();
             m.CreateMap<CollectionSettings, CollectionSettingsViewModel>();
             m.CreateMap<CollectionSettingsViewModel,CollectionSettings>();
+            m.CreateMap<DocumentTypeAttribute, DocumentTypeAttributeViewModel>();
             });
         }
     }

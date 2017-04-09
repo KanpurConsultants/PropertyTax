@@ -19,7 +19,7 @@ namespace Models.Customize.ViewModels
         public string ProductName { get; set; }
         public int Dimension1Id { get; set; }
         public string Dimension1Name { get; set; }
-        public int DiscountTypeId { get; set; }
+        public int? DiscountTypeId { get; set; }
         public string DiscountTypeName { get; set; }
         public Decimal DiscountRate { get; set; }
         public Decimal? PropertyArea { get; set; }

@@ -137,6 +137,8 @@ namespace Customize.Controllers
             p.SiteIds = System.Web.HttpContext.Current.Session["SiteId"].ToString();
             p.DocTypeId = id;
             PrepareViewBag(id);
+            List<DocumentTypeAttributeViewModel> tem = _PropertyHeaderService.GetAttributeForDocumentType(id).ToList();
+            p.DocumentTypeAttributes = tem;
 
             //p.Code = _PropertyHeaderService.FGetNewPersonCode(p.DocTypeId);
             ViewBag.Mode = "Add";
@@ -336,6 +338,9 @@ namespace Customize.Controllers
                 return RedirectToAction("DetailInformation", new { id = id, IndexType = IndexType });
             }
 
+
+            List<DocumentTypeAttributeViewModel> tem = _PropertyHeaderService.GetAttributeForPerson(id).ToList();
+            s.DocumentTypeAttributes = tem;
             
             PrepareViewBag(s.DocTypeId);
             if (s == null)

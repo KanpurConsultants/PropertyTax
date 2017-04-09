@@ -20,12 +20,13 @@ namespace Models.Customize.Models
         public virtual Godown Godown { get; set; }
 
         [ForeignKey("BinLocation"), Display(Name = "Bin Location")]
-        public int BinLocationId { get; set; }
+        public int? BinLocationId { get; set; }
         public virtual BinLocation BinLocation { get; set; }
         public string HouseNo { get; set; }
+        public string OldHouseNo { get; set; }
 
         [ForeignKey("Area"), Display(Name = "Area")]
-        public int AreaId { get; set; }
+        public int? AreaId { get; set; }
         public virtual Area Area { get; set; }
 
         public string FatherName { get; set; }
@@ -37,15 +38,15 @@ namespace Models.Customize.Models
         
 
         [ForeignKey("Caste"), Display(Name = "Caste")]
-        public int CasteId { get; set; }
+        public int? CasteId { get; set; }
         public virtual Caste Caste { get; set; }
 
         [ForeignKey("Religion"), Display(Name = "Religion")]
-        public int ReligionId { get; set; }
+        public int? ReligionId { get; set; }
         public virtual Religion Religion { get; set; }
 
         [ForeignKey("PersonRateGroup"), Display(Name = "PersonRateGroup")]
-        public int PersonRateGroupId { get; set; }
+        public int? PersonRateGroupId { get; set; }
         public virtual PersonRateGroup PersonRateGroup { get; set; }
         public Decimal? TotalPropertyArea { get; set; }
         public Decimal? TotalTaxableArea { get; set; }

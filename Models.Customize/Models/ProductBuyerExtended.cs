@@ -16,7 +16,7 @@ namespace Models.Customize.Models
         public DateTime DateOfConsutruction { get; set; }
         
         [ForeignKey("DiscountType"), Display(Name = "DiscountType")]
-        public int DiscountTypeId { get; set; }
+        public int? DiscountTypeId { get; set; }
         public virtual DiscountType DiscountType { get; set; }
         public Decimal? PropertyArea { get; set; }
         public Decimal? TaxableArea { get; set; }

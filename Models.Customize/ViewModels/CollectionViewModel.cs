@@ -24,9 +24,9 @@ namespace Models.Customize.ViewModels
         public string Name { get; set; }
         public int GodownId { get; set; }
         public string GodownName { get; set; }
-        public int BinLocationId { get; set; }
+        public int? BinLocationId { get; set; }
         public string BinLocationName { get; set; }
-        public int AreaId { get; set; }
+        public int? AreaId { get; set; }
         public string AreaName { get; set; }
         public string HouseNo { get; set; }
         public string FatherName { get; set; }

@@ -330,3 +330,5 @@ D:\Akash\PropertyTax\Customize\bin\Models.Reports.pdb
 D:\Akash\PropertyTax\Customize\bin\itextsharp.xml
 D:\Akash\PropertyTax\Customize\obj\Debug\Customize.dll
 D:\Akash\PropertyTax\Customize\obj\Debug\Customize.pdb
+D:\Akash\PropertyTax\Customize\bin\Data.dll
+D:\Akash\PropertyTax\Customize\bin\Data.pdb

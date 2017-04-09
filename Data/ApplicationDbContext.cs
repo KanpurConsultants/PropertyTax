@@ -54,6 +54,9 @@ namespace Data.Customize
         //User Models
 
 
+        public DbSet<PersonAddress> PersonAddress { get; set; }
+        public DbSet<DocumentTypeAttribute> DocumentTypeAttribute { get; set; }
+        public DbSet<PersonAttributes> PersonAttributes { get; set; }
         public DbSet<ReportHeader> ReportHeader { get; set; }
         public DbSet<ReportLine> ReportLine { get; set; }
         public DbSet<CollectionSettings> CollectionSettings { get; set; }

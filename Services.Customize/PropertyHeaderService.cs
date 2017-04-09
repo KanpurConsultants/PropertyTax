@@ -46,7 +46,7 @@ namespace Services.Customize
         byte[] GetReport(string Ids, int DocTypeId, string UserName);
 
         ComboBoxPagedResult GetPersonWithDocType(string searchTerm, int pageSize, int pageNum, int DocTypeId);
-        string FGetNewPersonCode(int SiteId, int GodownId, int BinLocationId);
+        string FGetNewPersonCode(int SiteId, int GodownId, int? BinLocationId);
         string FGetNewHouseNo(int SiteId, int GodownId, int BinLocationId);
 
 
@@ -57,6 +57,8 @@ namespace Services.Customize
         Decimal GetCurrentYearBalance(int PersonId);
         Decimal GetNetOutstanding(int PersonId);
         ComboBoxPagedResult GetProperty(string searchTerm, int pageSize, int pageNum);
+        IEnumerable<DocumentTypeAttributeViewModel> GetAttributeForDocumentType(int DocumentTypeId);
+        IEnumerable<DocumentTypeAttributeViewModel> GetAttributeForPerson(int id);
 
         #region Helper Methods
         void LogDetailInfo(PropertyHeaderViewModel vm);
@@ -172,6 +174,8 @@ namespace Services.Customize
                     from BusinessEntityTab in BusinessEntityTable.DefaultIfEmpty()
                     join L in _unitOfWork.Repository<LedgerAccount>().Instance on p.PersonID equals L.PersonId into LedgerAccountTable
                     from LedgerAccountTab in LedgerAccountTable.DefaultIfEmpty()
+                    join pa in _unitOfWork.Repository<PersonAddress>().Instance  on p.PersonID equals pa.PersonId into PersonAddressTable 
+                    from PersonAddressTab in PersonAddressTable.DefaultIfEmpty()
                     where p.PersonID == id
                     select new PropertyHeaderViewModel
                     {
@@ -185,6 +189,10 @@ namespace Services.Customize
                         GodownId = PersonExtendedTab.GodownId,
                         BinLocationId = PersonExtendedTab.BinLocationId,
                         HouseNo = PersonExtendedTab.HouseNo,
+                        OldHouseNo = PersonExtendedTab.OldHouseNo,
+                        PersonAddressId = PersonAddressTab.PersonAddressID,
+                        Address = PersonAddressTab.Address,
+                        ZipCode = PersonAddressTab.Zipcode,
                         AreaId = PersonExtendedTab.AreaId,
                         Name = p.Name,
                         FatherName = PersonExtendedTab.FatherName,
@@ -250,6 +258,7 @@ namespace Services.Customize
         public PropertyHeaderViewModel Create(PropertyHeaderViewModel vmPropertyHeader, string UserName)
         {
             Person person = Mapper.Map<PropertyHeaderViewModel, Person>(vmPropertyHeader);
+            PersonAddress personaddress = Mapper.Map<PropertyHeaderViewModel, PersonAddress>(vmPropertyHeader);
             BusinessEntity businessentity = Mapper.Map<PropertyHeaderViewModel, BusinessEntity>(vmPropertyHeader);
             LedgerAccount ledgeraccount = Mapper.Map<PropertyHeaderViewModel, LedgerAccount>(vmPropertyHeader);
             PersonExtended personextended = Mapper.Map<PropertyHeaderViewModel, PersonExtended>(vmPropertyHeader);
@@ -264,6 +273,15 @@ namespace Services.Customize
             person.Status = (int)StatusConstants.Drafted;
             person.ObjectState = Model.ObjectState.Added;
             Create(person);
+
+
+            personaddress.CreatedDate = DateTime.Now;
+            personaddress.ModifiedDate = DateTime.Now;
+            personaddress.CreatedBy = UserName;
+            personaddress.ModifiedBy = UserName;
+            personaddress.ObjectState = ObjectState.Added;
+            _unitOfWork.Repository<PersonAddress>().Add(personaddress);
+
 
             int CurrentDivisionId = (int)System.Web.HttpContext.Current.Session["DivisionId"];
             int CurrentSiteId = (int)System.Web.HttpContext.Current.Session["SiteId"];
@@ -317,6 +335,41 @@ namespace Services.Customize
             _unitOfWork.Repository<PersonExtended>().Add(personextended);
 
 
+            if (vmPropertyHeader.DocumentTypeAttributes != null)
+            {
+                foreach (var pta in vmPropertyHeader.DocumentTypeAttributes)
+                {
+
+                    PersonAttributes PersonAttribute = (from A in _unitOfWork.Repository<PersonAttributes>().Instance
+                                                         where A.PersonId == person.PersonID && A.DocumentTypeAttributeId == pta.DocumentTypeAttributeId
+                                                         select A).FirstOrDefault();
+
+                    if (PersonAttribute != null)
+                    {
+                        PersonAttribute.PersonAttributeValue = pta.DefaultValue;
+                        PersonAttribute.ObjectState = Model.ObjectState.Modified;
+                        _unitOfWork.Repository<PersonAttributes>().Add(PersonAttribute);
+                    }
+                    else
+                    {
+                        PersonAttributes pa = new PersonAttributes()
+                        {
+                            PersonAttributeValue = pta.DefaultValue,
+                            PersonId = person.PersonID,
+                            DocumentTypeAttributeId = pta.DocumentTypeAttributeId,
+                            CreatedBy = UserName,
+                            ModifiedBy = UserName,
+                            CreatedDate = DateTime.Now,
+                            ModifiedDate = DateTime.Now
+
+                        };
+                        pa.ObjectState = Model.ObjectState.Added;
+                        _unitOfWork.Repository<PersonAttributes>().Add(pa);
+                    }
+                }
+            }
+
+
             //End Line Save
 
 
@@ -345,6 +398,7 @@ namespace Services.Customize
             List<LogTypeViewModel> LogList = new List<LogTypeViewModel>();
 
             Person person = Find(vmPropertyHeader.PersonID);
+            PersonAddress personaddress = _unitOfWork.Repository<PersonAddress>().Find(vmPropertyHeader.PersonAddressId);
             PersonExtended personextended = _unitOfWork.Repository<PersonExtended>().Find(vmPropertyHeader.PersonID);
             BusinessEntity businessentity = _unitOfWork.Repository<BusinessEntity>().Find(vmPropertyHeader.PersonID);
             LedgerAccount ledgeraccount = _unitOfWork.Repository<LedgerAccount>().Find(vmPropertyHeader.LedgerAccountId); 
@@ -368,6 +422,14 @@ namespace Services.Customize
             person.ModifiedBy = UserName;
             person.ObjectState = Model.ObjectState.Modified;
             Update(person);
+
+
+            personaddress.Address = vmPropertyHeader.Address;
+            personaddress.Zipcode = vmPropertyHeader.ZipCode;
+            personaddress.ModifiedDate = DateTime.Now;
+            personaddress.ModifiedBy = UserName;
+            personaddress.ObjectState = ObjectState.Modified;
+            _unitOfWork.Repository<PersonAddress>().Add(personaddress);
 
 
             personextended.AadharNo = vmPropertyHeader.AadharNo;
@@ -422,6 +484,41 @@ namespace Services.Customize
             ledgeraccount.ModifiedBy = UserName;
             ledgeraccount.ObjectState = ObjectState.Modified;
             _unitOfWork.Repository<LedgerAccount>().Add(ledgeraccount);
+
+
+            if (vmPropertyHeader.DocumentTypeAttributes != null)
+            {
+                foreach (var pta in vmPropertyHeader.DocumentTypeAttributes)
+                {
+
+                    PersonAttributes PersonAttribute = (from A in _unitOfWork.Repository<PersonAttributes>().Instance
+                                                        where A.PersonId == person.PersonID && A.DocumentTypeAttributeId == pta.DocumentTypeAttributeId
+                                                        select A).FirstOrDefault();
+
+                    if (PersonAttribute != null)
+                    {
+                        PersonAttribute.PersonAttributeValue = pta.DefaultValue;
+                        PersonAttribute.ObjectState = Model.ObjectState.Modified;
+                        _unitOfWork.Repository<PersonAttributes>().Add(PersonAttribute);
+                    }
+                    else
+                    {
+                        PersonAttributes pa = new PersonAttributes()
+                        {
+                            PersonAttributeValue = pta.DefaultValue,
+                            PersonId = person.PersonID,
+                            DocumentTypeAttributeId = pta.DocumentTypeAttributeId,
+                            CreatedBy = UserName,
+                            ModifiedBy = UserName,
+                            CreatedDate = DateTime.Now,
+                            ModifiedDate = DateTime.Now
+
+                        };
+                        pa.ObjectState = Model.ObjectState.Added;
+                        _unitOfWork.Repository<PersonAttributes>().Add(pa);
+                    }
+                }
+            }
 
 
 
@@ -751,7 +848,7 @@ namespace Services.Customize
 
         #endregion
 
-        public string FGetNewPersonCode(int SiteId, int GodownId, int BinLocationId)
+        public string FGetNewPersonCode(int SiteId, int GodownId, int? BinLocationId)
         {
             SqlParameter SqlParameterSiteId = new SqlParameter("@SiteId", SiteId);
             SqlParameter SqlParameterGodownId = new SqlParameter("@GodownId", GodownId);
@@ -957,6 +1054,42 @@ namespace Services.Customize
 
             return Data;
 
+        }
+
+        public IEnumerable<DocumentTypeAttributeViewModel> GetAttributeForDocumentType(int DocumentTypeId)
+        {
+            return (from p in _unitOfWork.Repository<DocumentTypeAttribute>().Instance
+                    where p.DocumentTypeId == DocumentTypeId
+                    select new DocumentTypeAttributeViewModel
+                    {
+                        DataType = p.DataType,
+                        ListItem = p.ListItem,
+                        DefaultValue = p.DefaultValue,
+                        Name = p.Name,
+                        DocumentTypeAttributeId = p.DocumentTypeAttributeId,
+                        DocumentTypeId = p.DocumentTypeId,
+                    });
+        }
+
+        public IEnumerable<DocumentTypeAttributeViewModel> GetAttributeForPerson(int id)
+        {
+            PropertyHeaderViewModel s = GetPropertyHeader(id);
+
+            var temp = from p in _unitOfWork.Repository<DocumentTypeAttribute>().Instance
+                       join t in _unitOfWork.Repository<PersonAttributes>().Instance on p.DocumentTypeAttributeId equals t.DocumentTypeAttributeId into table
+                       from tab in table.Where(m => m.PersonId == id).DefaultIfEmpty()
+                       where (p.DocumentTypeId == s.DocTypeId)
+                       select new DocumentTypeAttributeViewModel
+                       {
+                           ListItem = p.ListItem,
+                           DataType = p.DataType,
+                           DefaultValue = tab.PersonAttributeValue,
+                           Name = p.Name,
+                           DocumentTypeAttributeId = p.DocumentTypeAttributeId,
+                           DocumentAttributeId = (int?)tab.PersonAttributeId ?? 0
+                       };
+
+            return temp;
         }
 
         
