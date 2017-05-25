@@ -354,6 +354,11 @@ namespace Customize.Controllers
             ViewBag.Name = _documentTypeService.Find(s.DocTypeId).DocumentTypeName;
             ViewBag.id = s.DocTypeId;
 
+
+            ViewBag.CollectionDocTypeId = Constants.DocumentTypeIdConstants.Collection;
+
+
+
             if (!(System.Web.HttpContext.Current.Request.UrlReferrer.PathAndQuery).Contains("Create"))
                 _PropertyHeaderService.LogDetailInfo(s);
 
@@ -623,7 +628,28 @@ namespace Customize.Controllers
             {
                 try
                 {
-                    var MergedPdf = _PropertyHeaderService.GetReport(Ids, DocTypeId, User.Identity.Name);
+                    var MergedPdf = _PropertyHeaderService.GetReport(Ids, DocTypeId, User.Identity.Name, "Web.spRep_PropertyPrint");
+                    return File(MergedPdf, "application/pdf");
+                }
+                catch (Exception ex)
+                {
+                    string message = _exception.HandleException(ex);
+                    return Json(new { success = "Error", data = message }, JsonRequestBehavior.AllowGet);
+                }
+
+            }
+            return Json(new { success = "Error", data = "No Records Selected." }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult GenerateInvoicePrints(string Ids, int DocTypeId)
+        {
+
+            if (!string.IsNullOrEmpty(Ids))
+            {
+                try
+                {
+                    var MergedPdf = _PropertyHeaderService.GetReport(Ids, DocTypeId, User.Identity.Name, "Web.spRep_InvoicePrint");
                     return File(MergedPdf, "application/pdf");
                 }
                 catch (Exception ex)

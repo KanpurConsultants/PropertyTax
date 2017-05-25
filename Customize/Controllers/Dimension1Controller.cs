@@ -38,6 +38,7 @@ namespace Customize.Controllers
 
         private readonly ILogger _logger;
         IDimension1Service _Dimension1Service;
+        IDimension1ExtendedService _Dimension1ExtendedService;
         IDocumentTypeService _DocumentTypeService;
         IExceptionHandler _exception;
         IDocumentValidation _documentValidation;
@@ -45,10 +46,11 @@ namespace Customize.Controllers
 
         private ActiivtyLogViewModel logVm = new ActiivtyLogViewModel();
 
-        public Dimension1Controller(IDimension1Service Dimension1Service, IDocumentTypeService DocumentTypeService, IExceptionHandler exec,
+        public Dimension1Controller(IDimension1Service Dimension1Service, IDimension1ExtendedService Dimension1ExtendedService, IDocumentTypeService DocumentTypeService, IExceptionHandler exec,
             ILogger log, IModificationCheck modificationCheck, IDocumentValidation DocValidation)
         {
             _Dimension1Service = Dimension1Service;
+            _Dimension1ExtendedService = Dimension1ExtendedService;
             _DocumentTypeService = DocumentTypeService;
             _exception = exec;
             _documentValidation = DocValidation;
@@ -86,7 +88,7 @@ namespace Customize.Controllers
 
         public ActionResult Create(int id)//DocumentTypeId
         {
-            Dimension1 vm = new Dimension1();
+            Dimension1ViewModel vm = new Dimension1ViewModel();
             vm.DocTypeId = Constants.DocumentTypeIdConstants.Dimension1;
             vm.ProductTypeId = id;
             vm.IsActive = true;
@@ -96,19 +98,24 @@ namespace Customize.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Post(Dimension1 vm)
+        public ActionResult Post(Dimension1ViewModel vm)
         {
-            Dimension1 pt = vm;
+            
             if (ModelState.IsValid)
             {
                 if (vm.Dimension1Id <= 0)
                 {
+                    Dimension1 pt = new Dimension1();
+                    pt.Dimension1Name = vm.Dimension1Name;
+                    pt.DocTypeId = vm.DocTypeId;
+                    pt.ProductTypeId = vm.ProductTypeId;
                     pt.IsActive = true;
                     pt.CreatedDate = DateTime.Now;
                     pt.ModifiedDate = DateTime.Now;
                     pt.CreatedBy = User.Identity.Name;
                     pt.ModifiedBy = User.Identity.Name;
                     pt.ObjectState = Model.ObjectState.Added;
+
                     
 
                     try
@@ -126,6 +133,14 @@ namespace Customize.Controllers
                         return View("Create", vm);
                     }
 
+                    Dimension1Extended Dimension1Extended = new Dimension1Extended();
+                    Dimension1Extended.Dimension1Id = pt.Dimension1Id;
+                    Dimension1Extended.CostCenterId = vm.CostCenterId;
+                    Dimension1Extended.Multiplier = vm.Multiplier;
+                    Dimension1Extended.ObjectState = Model.ObjectState.Added;
+                    _Dimension1ExtendedService.Create(Dimension1Extended);
+
+
 
                     _logger.LogActivityDetail(logVm.Map(new ActiivtyLogViewModel
                     {
@@ -142,12 +157,13 @@ namespace Customize.Controllers
                 {
                     List<LogTypeViewModel> LogList = new List<LogTypeViewModel>();
 
-                    Dimension1 temp = _Dimension1Service.Find(pt.Dimension1Id);
+                    Dimension1 temp = _Dimension1Service.Find(vm.Dimension1Id);
+                    Dimension1Extended tempExtended = _Dimension1ExtendedService.Find(vm.Dimension1Id);
                     
                     Dimension1 ExRec = Mapper.Map<Dimension1>(temp);
 
-                    temp.Dimension1Name = pt.Dimension1Name;
-                    temp.IsActive = pt.IsActive;
+                    temp.Dimension1Name = vm.Dimension1Name;
+                    temp.IsActive = vm.IsActive;
                     temp.ModifiedDate = DateTime.Now;
                     temp.ModifiedBy = User.Identity.Name;
                     temp.ObjectState = Model.ObjectState.Modified;
@@ -166,13 +182,19 @@ namespace Customize.Controllers
                         _Dimension1Service.Update(temp);
                     }
 
+
+
                     catch (Exception ex)
                     {
                         ViewBag.Mode = "Edit";
                         string message = _exception.HandleException(ex);
                         ModelState.AddModelError("", message);
-                        return View("Create", pt);
+                        return View("Create", vm);
                     }
+
+                    tempExtended.Multiplier = vm.Multiplier;
+                    tempExtended.CostCenterId = vm.CostCenterId;
+                    _Dimension1ExtendedService.Update(tempExtended);
 
                     _logger.LogActivityDetail(logVm.Map(new ActiivtyLogViewModel
                     {
@@ -195,12 +217,26 @@ namespace Customize.Controllers
         public ActionResult Modify(int id, string IndexType)
         {
             Dimension1 pt = _Dimension1Service.Find(id);
+            Dimension1Extended ptExtended = _Dimension1ExtendedService.Find(id);
+
+            Dimension1ViewModel vm = new Dimension1ViewModel();
+            vm.Dimension1Id = pt.Dimension1Id;
+            vm.Dimension1Name = pt.Dimension1Name;
+            vm.DocTypeId = (int)pt.DocTypeId;
+            vm.ProductTypeId = pt.ProductTypeId;
+            vm.IsActive = pt.IsActive;
+            vm.CreatedBy = pt.CreatedBy;
+            vm.CreatedDate = pt.CreatedDate;
+            vm.Multiplier = ptExtended.Multiplier;
+            vm.CostCenterId = ptExtended.CostCenterId;
+
+
             if (pt == null)
             {
                 return HttpNotFound();
             }
             ViewBag.Mode = "Edit";
-            return View("Create", pt);
+            return View("Create", vm);
         }
 
        
@@ -275,6 +311,7 @@ namespace Customize.Controllers
 
                     XElement Modifications = _modificationCheck.CheckChanges(LogList);
 
+                    _Dimension1ExtendedService.Delete(vm.id);
                     _Dimension1Service.Delete(vm.id);
 
                     _logger.LogActivityDetail(logVm.Map(new ActiivtyLogViewModel

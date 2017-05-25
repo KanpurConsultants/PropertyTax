@@ -82,9 +82,11 @@
                     @Html.ActionLink(" ", "Create", "PropertyHeader", new { @id = ViewBag.id }, new { @class = "cbtn btn-circle glyphicon glyphicon-plus toolbar", @title = "Add New", @data_toggle = "tooltip", target = "" })
                     @Html.ActionLink(" ", EditAction, "PropertyHeader", new { @id = Model.PersonID, IndexType = ViewBag.IndexStatus }, new { @class = "cbtn btn-circle glyphicon glyphicon-edit", @title = "Edit", @data_toggle = "tooltip" })
                     @Html.ActionLink(" ", "GeneratePrints", "PropertyHeader", new { Ids = Model.PersonID, DocTypeId = Model.DocTypeId }, new { @class = "cbtn btn-circle glyphicon glyphicon-print toolbar", @title = "Print", @data_toggle = "tooltip", @id = "PrintRecordC", target = "_blank" })
+                    @Html.ActionLink(" ", "GenerateInvoicePrints", "PropertyHeader", null, new { @class = "cbtn btn-circle glyphicon glyphicon-list-alt toolbar", @title = "Bill Print", @data_toggle = "tooltip", @id = "PrintRecordI", target = "_blank" })
                     @Html.ActionLink(" ", "PrevPage", "PropertyHeader", new { DocId = @Model.PersonID, DocTypeId = Model.DocTypeId }, new { @class = "cbtn btn-circle glyphicon glyphicon-arrow-left toolbar", @title = "Prev Record", @data_toggle = "tooltip" })
                     @Html.ActionLink(" ", "NextPage", "PropertyHeader", new { DocId = @Model.PersonID, DocTypeId = Model.DocTypeId }, new { @class = "cbtn btn-circle glyphicon glyphicon-arrow-right toolbar", @title = "Next Record", @data_toggle = "tooltip" })
                     @Html.ActionLink(" ", "Index", "PropertyHeader", new { id = ViewBag.id, IndexType = ViewBag.IndexStatus }, new { @class = "cbtn btn-circle glyphicon glyphicon-list toolbar", @title = "List", @data_toggle = "tooltip" })
+                    @Html.ActionLink(" ", "Create", "Collection", new { @id = ViewBag.CollectionDocTypeId, @PersonId = Model.PersonID }, new { @class = "cbtn btn-circle glyphicon glyphicon-log-out toolbar", @title = "Collection", @data_toggle = "tooltip", target = "_blank" })
                 </div>
                 <div class="btn-group">
                     <a class="cbtn btn-circle glyphicon glyphicon-option-horizontal dropdown-toggle" aria-expanded="false" style="padding-top: 6px;padding-bottom: 6px;" href="#" data-toggle="dropdown" id="dropdownMenu1">
@@ -92,8 +94,8 @@
                     <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
                         <li><a id="DocHistory" data-modal="" href="@Url.Action("GetHistory", "LogHistory", new { Ids = Model.PersonID, DocTypeId = Model.DocTypeId })"><span class="glyphicon glyphicon-user"> </span> History</a></li>
                         @*<li><a href="@Url.Action("Email", "PropertyHeader")"><span class="glyphicon glyphicon-envelope"> </span> Email</a></li>*@
-                        <li role="separator" class="divider"></li>
-                        <li><a href="@Url.Action("Report", "PropertyHeader")"><span class="glyphicon glyphicon-th"> </span> Report</a></li>
+                        @*<li role="separator" class="divider"></li>
+                        <li><a href="@Url.Action("Report", "PropertyHeader")"><span class="glyphicon glyphicon-th"> </span> Report</a></li>*@
                     </ul>
                 </div>
             </div>
@@ -157,7 +159,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.BinLocationId, "Chak No.", new { @class = "control-label col-xs-4" })
                                     <div class="col-xs-6">
-                                        @Html.TextBoxFor(m => m.BinLocationId, new { @class = "form-control col-xs-6 required" })
+                                        @Html.TextBoxFor(m => m.BinLocationId, new { @class = "form-control col-xs-6 " })
                                         @Html.ValidationMessageFor(m => m.BinLocationId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -177,7 +179,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.OldHouseNo, "Old House No.", new { @class = "control-label col-xs-4" })
                                     <div class="col-xs-6">
-                                        @Html.TextBoxFor(m => m.OldHouseNo, new { @class = "form-control col-xs-6 required" })
+                                        @Html.TextBoxFor(m => m.OldHouseNo, new { @class = "form-control col-xs-6 " })
                                         @Html.ValidationMessageFor(model => model.OldHouseNo, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -225,7 +227,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.ZipCode, "Zip Code", new { @class = "control-label col-xs-4" })
+                                    @Html.LabelFor(model => model.ZipCode, "Pin Code", new { @class = "control-label col-xs-4" })
                                     <div class="col-xs-6">
                                         @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control col-xs-6 " })
                                         @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
@@ -287,7 +289,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.PersonRateGroupId, "Road Type", new { @class = "control-label col-xs-4" })
+                                    @Html.LabelFor(model => model.PersonRateGroupId, "Road Width", new { @class = "control-label col-xs-4" })
                                     <div class="col-xs-6">
                                         @Html.TextBoxFor(m => m.PersonRateGroupId, new { @class = "form-control col-xs-6  required" })
                                         @Html.ValidationMessageFor(model => model.PersonRateGroupId, "", new { @class = "text-danger" })
@@ -836,7 +838,7 @@
                         +               TotalTaxableArea.toFixed(3)+"</strong>"
                         +"          </div>"
                         +"          <div class='block text-right' style='width:11%'><strong>"
-                        +               TotalARV.toFixed(3)+"</strong>"
+                        +               TotalARV.toFixed(2)+"</strong>"
                         +"          </div>"
                         +"      </div>"
                         +"  </div>"

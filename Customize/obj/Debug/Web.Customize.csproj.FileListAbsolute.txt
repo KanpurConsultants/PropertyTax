@@ -227,7 +227,6 @@ D:\Akash\PropertyTax\Customize\bin\Customize.dll
 D:\Akash\PropertyTax\Customize\bin\Customize.pdb
 D:\Akash\PropertyTax\Customize\bin\Antlr3.Runtime.dll
 D:\Akash\PropertyTax\Customize\bin\AutoMapper.dll
-D:\Akash\PropertyTax\Customize\bin\Components.dll
 D:\Akash\PropertyTax\Customize\bin\CookieNotifier.dll
 D:\Akash\PropertyTax\Customize\bin\EntityFramework.dll
 D:\Akash\PropertyTax\Customize\bin\EntityFramework.SqlServer.dll
@@ -263,7 +262,6 @@ D:\Akash\PropertyTax\Customize\bin\Newtonsoft.Json.dll
 D:\Akash\PropertyTax\Customize\bin\Notifier.dll
 D:\Akash\PropertyTax\Customize\bin\Owin.dll
 D:\Akash\PropertyTax\Customize\bin\ProjLib.dll
-D:\Akash\PropertyTax\Customize\bin\Services.BasicSetup.dll
 D:\Akash\PropertyTax\Customize\bin\Services.Customize.dll
 D:\Akash\PropertyTax\Customize\bin\Surya.Planning.Data.dll
 D:\Akash\PropertyTax\Customize\bin\System.Web.Helpers.dll
@@ -330,5 +328,5 @@ D:\Akash\PropertyTax\Customize\bin\Models.Reports.pdb
 D:\Akash\PropertyTax\Customize\bin\itextsharp.xml
 D:\Akash\PropertyTax\Customize\obj\Debug\Customize.dll
 D:\Akash\PropertyTax\Customize\obj\Debug\Customize.pdb
-D:\Akash\PropertyTax\Customize\bin\Data.dll
-D:\Akash\PropertyTax\Customize\bin\Data.pdb
+D:\Akash\PropertyTax\Customize\bin\Components.dll
+D:\Akash\PropertyTax\Customize\bin\Services.BasicSetup.dll

@@ -130,6 +130,7 @@ namespace Services.Customize
                             ARV = ProductBuyerExtendedTab.ARV,
                             TenantName = ProductBuyerExtendedTab.TenantName,
                             BillingType = ProductBuyerExtendedTab.BillingType,
+                            Description = ProductBuyerExtendedTab.Description,
                             CoveredArea = ProductBuyerExtendedTab.CoveredArea,
                             GarageArea = ProductBuyerExtendedTab.GarageArea,
                             BalconyArea = ProductBuyerExtendedTab.BalconyArea,
@@ -286,6 +287,7 @@ namespace Services.Customize
             productbuyerextended.ARV = svm.ARV;
             productbuyerextended.TenantName = svm.TenantName;
             productbuyerextended.BillingType = svm.BillingType;
+            productbuyerextended.Description = svm.Description;
             productbuyerextended.CoveredArea = svm.CoveredArea;
             productbuyerextended.GarageArea = svm.GarageArea;
             productbuyerextended.BalconyArea = svm.BalconyArea;

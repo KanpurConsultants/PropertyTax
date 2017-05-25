@@ -96,7 +96,6 @@ D:\Akash\PropertyTax\Services.Customize\bin\Release\Microsoft.AspNet.Identity.En
 D:\Akash\PropertyTax\Services.Customize\bin\Release\Models.BasicSetup.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Release\Models.Customize.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Release\ProjLib.dll
-D:\Akash\PropertyTax\Services.Customize\bin\Release\Services.BasicSetup.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Release\Services.Reports.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Release\Surya.Planning.Data.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Release\TimePlanValidator.dll
@@ -122,3 +121,4 @@ D:\Akash\PropertyTax\Services.Customize\bin\Release\Models.Reports.pdb
 D:\Akash\PropertyTax\Services.Customize\obj\Release\Services.Customize.csprojResolveAssemblyReference.cache
 D:\Akash\PropertyTax\Services.Customize\obj\Release\Services.Customize.dll
 D:\Akash\PropertyTax\Services.Customize\obj\Release\Services.Customize.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Release\Services.BasicSetup.dll

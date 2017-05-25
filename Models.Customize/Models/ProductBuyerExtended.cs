@@ -23,6 +23,7 @@ namespace Models.Customize.Models
         public Decimal? ARV { get; set; }
         public string TenantName { get; set; }
         public string BillingType { get; set; }
+        public string Description { get; set; }
         public Decimal? CoveredArea { get; set; }
         public Decimal? GarageArea { get; set; }
         public Decimal? BalconyArea { get; set; }

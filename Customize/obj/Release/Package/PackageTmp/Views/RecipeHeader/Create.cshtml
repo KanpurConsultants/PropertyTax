@@ -96,8 +96,8 @@
                     <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
                         <li><a id="DocHistory" data-modal="" href="@Url.Action("GetHistory", "LogHistory", new { Ids = Model.JobOrderHeaderId, DocTypeId = Model.DocTypeId })"><span class="glyphicon glyphicon-user"> </span> History</a></li>
                         <li><a href="@Url.Action("Email", "RecipeHeader")"><span class="glyphicon glyphicon-envelope"> </span> Email</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="@Url.Action("Report", "RecipeHeader")"><span class="glyphicon glyphicon-th"> </span> Report</a></li>
+                        @*<li role="separator" class="divider"></li>
+                        <li><a href="@Url.Action("Report", "RecipeHeader")"><span class="glyphicon glyphicon-th"> </span> Report</a></li>*@
                     </ul>
                 </div>
             </div>

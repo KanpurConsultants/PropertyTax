@@ -130,6 +130,9 @@ namespace Customize.App_Start
             container.RegisterType<IRepository<Caste>, Repository<Caste>>();
             container.RegisterType<ICasteService, CasteService>(new PerRequestLifetimeManager());
 
+            container.RegisterType<IRepository<Dimension1Extended>, Repository<Dimension1Extended>>();
+            container.RegisterType<IDimension1ExtendedService, Dimension1ExtendedService>(new PerRequestLifetimeManager());
+
             container.RegisterType<IRepository<DiscountType>, Repository<DiscountType>>();
             container.RegisterType<IDiscountTypeService, DiscountTypeService>(new PerRequestLifetimeManager());
 

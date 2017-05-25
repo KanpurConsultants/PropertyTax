@@ -93,6 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dimension1ExtendedService.cs" />
     <Compile Include="DiscountTypeService.cs" />
     <Compile Include="CollectionService.cs" />
     <Compile Include="ExceptionHandlingService.cs" />

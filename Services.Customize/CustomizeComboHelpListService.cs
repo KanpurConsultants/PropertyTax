@@ -66,6 +66,10 @@ namespace Services.Customize
 
         ComboBoxPagedResult GetPaymentMode(string searchTerm, int pageSize, int pageNum);
         ComboBoxResult GetPaymentModeById(int Id);
+
+
+        ComboBoxPagedResult GetCostCenter(string searchTerm, int pageSize, int pageNum);
+        ComboBoxResult GetCostCenterById(int Id);
     }
 
     public class CustomizeComboHelpListService : ICustomizeComboHelpListService
@@ -333,7 +337,14 @@ namespace Services.Customize
 
 
 
-
+        public ComboBoxPagedResult GetCostCenter(string searchTerm, int pageSize, int pageNum)
+        {
+            return new CostCenterService(_unitOfWork).GetList(searchTerm, pageSize, pageNum);
+        }
+        public ComboBoxResult GetCostCenterById(int Id)
+        {
+            return new CostCenterService(_unitOfWork).GetValue(Id);
+        }
 
         public void Dispose()
         {

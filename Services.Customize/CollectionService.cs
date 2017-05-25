@@ -569,7 +569,31 @@ namespace Services.Customize
 
         public int NextPrevId(int DocId, int DocTypeId, string UserName, string PrevNext)
         {
-            return new NextPrevIdService(_unitOfWork).GetNextPrevId(DocId, DocTypeId, UserName, "", "Web.LedgerHeaders", "LedgerHeaderId", PrevNext);
+            //return new NextPrevIdService(_unitOfWork).GetNextPrevId(DocId, DocTypeId, UserName, "", "Web.LedgerHeaders", "LedgerHeaderId", PrevNext);
+            return GetNextPrevId(DocId, DocTypeId, UserName, "", "Web.LedgerHeaders", "LedgerHeaderId", PrevNext);
+        }
+
+        public int GetNextPrevId(int DocId, int DocTypeId, string UserName, string ForAction, string HeaderTableName, string HeaderTablePK, string NextPrev)
+        {
+
+            SqlParameter SqlParameterUserName = new SqlParameter("@UserName", UserName);
+            SqlParameter SqlParameterForAction = new SqlParameter("@ForAction", ForAction);
+            SqlParameter SqlParameterHeaderTableName = new SqlParameter("@HeaderTableName", HeaderTableName);
+            SqlParameter SqlParameterHeaderTablePkFieldName = new SqlParameter("@HeaderTablePkFieldName", HeaderTablePK);
+            SqlParameter SqlParameterDocId = new SqlParameter("@DocId", DocId);
+            SqlParameter SqlParameterDocTypeId = new SqlParameter("@DocTypeId", DocTypeId);
+            SqlParameter SqlParameterNextPrevious = new SqlParameter("@NextPrevious", NextPrev);
+
+            int Id = _unitOfWork.SqlQuery<int>("" + ConfigurationManager.AppSettings["DataBaseSchema"] + ".spGetNextPreviousIdForCollection @UserName, @ForAction, @HeaderTableName, @HeaderTablePkFieldName, @DocId, @DocTypeId, @NextPrevious", SqlParameterUserName, SqlParameterForAction, SqlParameterHeaderTableName, SqlParameterHeaderTablePkFieldName, SqlParameterDocId, SqlParameterDocTypeId, SqlParameterNextPrevious).FirstOrDefault();
+
+            if (Id == 0 || Id == null)
+            {
+                return DocId;
+            }
+            else
+            {
+                return Id;
+            }
         }
 
 

@@ -43,7 +43,9 @@ namespace Services.Customize
         void Submit(int Id, string UserName, string GenGatePass, string UserRemark);
         void Review(int Id, string UserName, string UserRemark);
         int NextPrevId(int DocId, int DocTypeId, string UserName, string PrevNextConstants);
-        byte[] GetReport(string Ids, int DocTypeId, string UserName);
+        byte[] GetReport(string Ids, int DocTypeId, string UserName, string SqlProc);
+
+
 
         ComboBoxPagedResult GetPersonWithDocType(string searchTerm, int pageSize, int pageNum, int DocTypeId);
         string FGetNewPersonCode(int SiteId, int GodownId, int? BinLocationId);
@@ -708,7 +710,7 @@ namespace Services.Customize
             return Id;
         }
 
-        public byte[] GetReport(string Ids, int DocTypeId, string UserName)
+        public byte[] GetReport(string Ids, int DocTypeId, string UserName, string SqlProc)
         {
 
             int SiteId = (int)System.Web.HttpContext.Current.Session["SiteId"];
@@ -717,9 +719,17 @@ namespace Services.Customize
             //var Settings = new PersonSettingService(_unitOfWork).GetJobOrderSettingsForDocument(DocTypeId, DivisionId, SiteId);
 
             string DocumentPrint = "";
-            string SqlProcDocumentPrint = "Web.spRep_PropertyPrint";
-            string SqlProcDocumentPrint_AfterSubmit = "Web.spRep_PropertyPrint";
-            string SqlProcDocumentPrint_AfterApprove = "Web.spRep_PropertyPrint";
+            //string SqlProcDocumentPrint = "Web.spRep_PropertyPrint";
+            //string SqlProcDocumentPrint_AfterSubmit = "Web.spRep_PropertyPrint";
+            //string SqlProcDocumentPrint_AfterApprove = "Web.spRep_PropertyPrint";
+
+            //string SqlProcDocumentPrint = "Web.spRep_InvoicePrint";
+            //string SqlProcDocumentPrint_AfterSubmit = "Web.spRep_InvoicePrint";
+            //string SqlProcDocumentPrint_AfterApprove = "Web.spRep_InvoicePrint";
+
+            string SqlProcDocumentPrint = SqlProc;
+            string SqlProcDocumentPrint_AfterSubmit = SqlProc;
+            string SqlProcDocumentPrint_AfterApprove = SqlProc;
 
             string ReportSql = "";
 
@@ -852,9 +862,9 @@ namespace Services.Customize
         {
             SqlParameter SqlParameterSiteId = new SqlParameter("@SiteId", SiteId);
             SqlParameter SqlParameterGodownId = new SqlParameter("@GodownId", GodownId);
-            SqlParameter SqlParameterBinLocationId = new SqlParameter("@BinLocationId", BinLocationId);
+            //SqlParameter SqlParameterBinLocationId = new SqlParameter("@BinLocationId", BinLocationId);
 
-            NewDocNoViewModel NewDocNoViewModel = _unitOfWork.SqlQuery<NewDocNoViewModel>("" + System.Configuration.ConfigurationManager.AppSettings["DataBaseSchema"] + ".GetNewPersonCode @SiteId, @GodownId, @BinLocationId ", SqlParameterSiteId, SqlParameterGodownId, SqlParameterBinLocationId).FirstOrDefault();
+            NewDocNoViewModel NewDocNoViewModel = _unitOfWork.SqlQuery<NewDocNoViewModel>("" + System.Configuration.ConfigurationManager.AppSettings["DataBaseSchema"] + ".GetNewPersonCode @SiteId, @GodownId ", SqlParameterSiteId, SqlParameterGodownId).FirstOrDefault();
 
             if (NewDocNoViewModel != null)
             {

@@ -1,4 +1,4 @@
-﻿@model Models.BasicSetup.Models.Dimension1
+﻿@model Models.Customize.ViewModels.Dimension1ViewModel
 @using ProjLib.Constants
 @using Components.Logging
 
@@ -75,7 +75,7 @@
                     @Html.ActionLink(" ", "Report", "Dimension1", null, new { @class = "glyphicon glyphicon-th toolbar right", @title = "Report", @data_toggle = "tooltip" })
                 </h4>*@
                 <div class="btn-group">
-                    @Html.ActionLink(" ", "Create", "Dimension1", new { @id = Model.ProductTypeId }, new { @class = "cbtn btn-circle glyphicon glyphicon-plus toolbar", @title = "Add New", @data_toggle = "tooltip", target = "_blank" })
+                    @Html.ActionLink(" ", "Create", "Dimension1", new { @id = Model.ProductTypeId }, new { @class = "cbtn btn-circle glyphicon glyphicon-plus toolbar", @title = "Add New", @data_toggle = "tooltip"})
                     @Html.ActionLink(" ", EditAction, "Dimension1", new { @id = Model.Dimension1Id }, new { @class = "cbtn btn-circle glyphicon glyphicon-edit", @title = "Edit", @data_toggle = "tooltip" })
                     @*@Html.ActionLink(" ", "GeneratePrints", "Dimension1", null, new { @class = "cbtn btn-circle glyphicon glyphicon-print toolbar", @title = "Print", @data_toggle = "tooltip", @id = "PrintRecordC", target = "_blank" })*@
                     @Html.ActionLink(" ", "PrevPage", "Dimension1", new { DocId = @Model.Dimension1Id, ProductTypeId = @Model.ProductTypeId }, new { @class = "cbtn btn-circle glyphicon glyphicon-arrow-left toolbar", @title = "Prev Record", @data_toggle = "tooltip" })
@@ -116,6 +116,26 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group" style="margin-top:15px">
+                                    @Html.LabelFor(model => model.CostCenterId, "Property Type Head", new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-7 col-sm-10">
+                                        @Html.TextBoxFor(m => m.CostCenterId, null, new { @class = "form-control col-xs-6 required" })
+                                        @Html.ValidationMessageFor(m => m.CostCenterId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Multiplier, "Multiplier", new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-7 col-sm-10">
+                                        @Html.TextBoxFor(m => m.Multiplier, null, new { @class = "form-control col-xs-6 required" })
+                                        @Html.ValidationMessageFor(m => m.Multiplier, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,6 +150,8 @@
 {
 
     <script type="text/javascript">
+
+        CustomSelectFunction($("#CostCenterId"), '/ComboHelpList/GetCostCenter', '/ComboHelpList/SetSingleCostCenter', ' ', false, 0);
 
         //Reloading the table contents on modal hide
         //$('#myModal').on('hidden.bs.modal', function () {

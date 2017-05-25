@@ -351,5 +351,18 @@ namespace Customize.Controllers
         {
             return Json(_cusComboHelpListService.GetPaymentModeById(Ids));
         }
+
+        public ActionResult GetCostCenter(string searchTerm, int pageSize, int pageNum)
+        {
+            return new JsonpResult
+            {
+                Data = _cusComboHelpListService.GetCostCenter(searchTerm, pageSize, pageNum),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+        public JsonResult SetSingleCostCenter(int Ids)
+        {
+            return Json(_cusComboHelpListService.GetCostCenterById(Ids));
+        }
     }
 }

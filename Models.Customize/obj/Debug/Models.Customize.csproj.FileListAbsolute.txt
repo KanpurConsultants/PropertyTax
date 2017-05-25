@@ -34,7 +34,6 @@ D:\Akash\Property Tax\Models.Customize\bin\Debug\Microsoft.AspNet.Identity.Core.
 D:\Akash\Property Tax\Models.Customize\obj\Debug\Models.Customize.csprojResolveAssemblyReference.cache
 D:\Akash\Property Tax\Models.Customize\obj\Debug\Models.Customize.dll
 D:\Akash\Property Tax\Models.Customize\obj\Debug\Models.Customize.pdb
-D:\Akash\PropertyTax\Models.Customize\obj\Debug\Models.Customize.csprojResolveAssemblyReference.cache
 D:\Akash\PropertyTax\Models.Customize\bin\Debug\Models.Customize.dll.config
 D:\Akash\PropertyTax\Models.Customize\bin\Debug\Models.Customize.dll
 D:\Akash\PropertyTax\Models.Customize\bin\Debug\Models.Customize.pdb
@@ -52,3 +51,4 @@ D:\Akash\PropertyTax\Models.Customize\bin\Debug\Microsoft.AspNet.Identity.Entity
 D:\Akash\PropertyTax\Models.Customize\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Akash\PropertyTax\Models.Customize\obj\Debug\Models.Customize.dll
 D:\Akash\PropertyTax\Models.Customize\obj\Debug\Models.Customize.pdb
+D:\Akash\PropertyTax\Models.Customize\obj\Debug\Models.Customize.csprojResolveAssemblyReference.cache

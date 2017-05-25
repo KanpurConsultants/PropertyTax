@@ -75,7 +75,7 @@
                     @Html.ActionLink(" ", "Report", "Product", null, new { @class = "glyphicon glyphicon-th toolbar right", @title = "Report", @data_toggle = "tooltip" })
                 </h4>*@
                 <div class="btn-group">
-                    @Html.ActionLink(" ", "Create", "Product", null, new { @class = "cbtn btn-circle glyphicon glyphicon-plus toolbar", @title = "Add New", @data_toggle = "tooltip", target = "_blank" })
+                    @Html.ActionLink(" ", "Create", "Product", null, new { @class = "cbtn btn-circle glyphicon glyphicon-plus toolbar", @title = "Add New", @data_toggle = "tooltip" })
                     @Html.ActionLink(" ", EditAction, "Product", new { @id = Model.ProductId }, new { @class = "cbtn btn-circle glyphicon glyphicon-edit", @title = "Edit", @data_toggle = "tooltip" })
                     @*@Html.ActionLink(" ", "GeneratePrints", "Product", null, new { @class = "cbtn btn-circle glyphicon glyphicon-print toolbar", @title = "Print", @data_toggle = "tooltip", @id = "PrintRecordC", target = "_blank" })*@
                     @Html.ActionLink(" ", "PrevPage", "Product", new { DocId = @Model.ProductId }, new { @class = "cbtn btn-circle glyphicon glyphicon-arrow-left toolbar", @title = "Prev Record", @data_toggle = "tooltip" })

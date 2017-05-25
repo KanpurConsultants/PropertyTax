@@ -49,7 +49,9 @@
                 </ul>
             </div>
             <div class="btn-group right">
-                @CustomHelpers.RenderIconStatusFilters(ViewBag.PendingToSubmit, ViewBag.PendingToReview, ControllerName, ViewBag.id, ViewBag.IndexStatus)
+                @*@CustomHelpers.RenderIconStatusFilters(ViewBag.PendingToSubmit, ViewBag.PendingToReview, ControllerName, ViewBag.id, ViewBag.IndexStatus)*@
+                @Html.ActionLink(" ", "Index_PendingToReview", "Collection", new { id = ViewBag.id, PersonId = @ViewBag.PersonId }, new { @class = "cbtn btn-circle glyphicon glyphicon-thumbs-up", @title = "Pending To Review", @data_toggle = "tooltip" })
+                @Html.ActionLink(" ", "Index_PendingToSubmit", "Collection", new { id = ViewBag.id, PersonId = @ViewBag.PersonId }, new { @class = "cbtn btn-circle glyphicon glyphicon-floppy-open", @title = "Pending To Submit", @data_toggle = "tooltip" })
             </div>
         </div>
         @*<hr style="margin-top: 5px; margin-bottom: 5px; border-top: 1px solid #706f6f; " />

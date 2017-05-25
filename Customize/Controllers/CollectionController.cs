@@ -108,7 +108,7 @@ namespace Customize.Controllers
 
         public ActionResult Index_PendingToSubmit(int id, int PersonId)
         {
-            IQueryable<CollectionViewModel> p = _CollectionService.GetCollectionListPendingToSubmit(id, User.Identity.Name);
+            IQueryable<CollectionViewModel> p = _CollectionService.GetCollectionListPendingToSubmit(id, User.Identity.Name).Where(m => m.PersonId == PersonId);
 
             PrepareViewBag(id);
             ViewBag.PendingToSubmit = PendingToSubmitCount(id);
@@ -120,7 +120,7 @@ namespace Customize.Controllers
 
         public ActionResult Index_PendingToReview(int id, int PersonId)
         {
-            IQueryable<CollectionViewModel> p = _CollectionService.GetCollectionListPendingToReview(id, User.Identity.Name);
+            IQueryable<CollectionViewModel> p = _CollectionService.GetCollectionListPendingToReview(id, User.Identity.Name).Where(m => m.PersonId == PersonId);
             PrepareViewBag(id);
             ViewBag.PendingToSubmit = PendingToSubmitCount(id);
             ViewBag.PendingToReview = PendingToReviewCount(id);
@@ -188,6 +188,11 @@ namespace Customize.Controllers
                 {
                     ModelState.AddModelError("ReferenceLedgerAccountId", "Reason field is required");
                 }
+            }
+
+            if (svm.PaymentModeId == null || svm.PaymentModeId == 0)
+            {
+                ModelState.AddModelError("PaymentModeId", "Payment Mode field is required");
             }
 
 

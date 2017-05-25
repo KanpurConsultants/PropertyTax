@@ -67,6 +67,7 @@
     <Compile Include="Models\DiscountType.cs" />
     <Compile Include="Models\DocumentAttachment.cs" />
     <Compile Include="Models\CollectionSetting.cs" />
+    <Compile Include="Models\Dimension1Extended.cs" />
     <Compile Include="Models\ProductBuyerExtended.cs" />
     <Compile Include="Models\Religion.cs" />
     <Compile Include="Models\Caste.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Models\PerkDocumentType.cs" />
     <Compile Include="Models\ProdOrderLineStatus.cs" />
     <Compile Include="ViewModels\DocumentAttachmentViewModel.cs" />
+    <Compile Include="ViewModels\Dimension1ViewModel.cs" />
     <Compile Include="ViewModels\DyeingViewModel.cs" />
     <Compile Include="ViewModels\CollectionViewModel.cs" />
     <Compile Include="ViewModels\CollectionSettingsViewModel.cs" />

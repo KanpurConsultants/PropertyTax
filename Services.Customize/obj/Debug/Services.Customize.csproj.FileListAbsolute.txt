@@ -95,7 +95,6 @@ D:\Akash\PropertyTax\Services.Customize\bin\Debug\Microsoft.AspNet.Identity.Enti
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.BasicSetup.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.Customize.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\ProjLib.dll
-D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.BasicSetup.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.Reports.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\Surya.Planning.Data.dll
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\TimePlanValidator.dll
@@ -118,3 +117,4 @@ D:\Akash\PropertyTax\Services.Customize\bin\Debug\TimePlanValidator.pdb
 D:\Akash\PropertyTax\Services.Customize\bin\Debug\Models.Reports.pdb
 D:\Akash\PropertyTax\Services.Customize\obj\Debug\Services.Customize.dll
 D:\Akash\PropertyTax\Services.Customize\obj\Debug\Services.Customize.pdb
+D:\Akash\PropertyTax\Services.Customize\bin\Debug\Services.BasicSetup.dll
