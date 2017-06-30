@@ -96,7 +96,7 @@
                 <Value>=First(Fields!CompanyName.Value, "DsMain")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -128,6 +128,7 @@
                   +First(Fields!CompanyPhoneNo.Value, "DsMain")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -137,8 +138,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CompanyAddress</rd:DefaultName>
-        <Top>0.27083in</Top>
-        <Height>0.54445in</Height>
+        <Top>0.32291in</Top>
+        <Height>0.75278in</Height>
         <Width>7.41542in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -153,7 +154,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>0.96542in</Height>
+    <Height>1.0757in</Height>
     <Style />
   </Body>
   <ReportParameters>

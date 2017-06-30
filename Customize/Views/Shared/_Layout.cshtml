@@ -51,6 +51,7 @@
 
             </div>
             <div class="navbar-collapse collapse">
+
                 <ul class="nav navbar-nav">
                     @{
                         string Defaultdomain = (@System.Configuration.ConfigurationManager.AppSettings["MenuDomain"]);
@@ -78,249 +79,259 @@
                     </li>
                     <li><a href="@Defaultdomain/SiteSelection/SiteSelection/"><span>@System.Web.HttpContext.Current.Session[SessionNameConstants.SiteShortName]</span>|<span>@System.Web.HttpContext.Current.Session[SessionNameConstants.DivisionName]</span></a></li>
 
+                    
+
                 </ul>
-                @*<form class="navbar-form navbar-left" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" style="border-radius:20px ! important;">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>*@
-                <ul class="nav navbar-nav navbar-right">
 
-                        @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleMessage ??  true)
+                <ul class="nav navbar-nav" style="align-self:center">
+                    @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleCompanyName ?? false)
+                    {
+                        <li style="text-align:center;font-size:x-large"><a href="#"><span>@System.Web.HttpContext.Current.Session[SessionNameConstants.CompanyName]</span></a></li>
+                    }
+                </ul>
+
+
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleMessage ?? true)
                         {
                     <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-envelope"></i>
-                            <span class="label label-danger"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 0 notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                    <span class="label label-danger"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 0 notifications</li>
                                     <li>
-                                        <a href="#">
-                                            <i class="glyphicon glyphicon-wrench text-red"></i> Under Implementation
-                                        </a>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="glyphicon glyphicon-wrench text-red"></i> Under Implementation
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
+                                    <li class="footer"><a href="#">View all</a></li>
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                    }
+                        }
 
-                        @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleTask ??  true)
+                        @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleTask ?? true)
                         {
                     <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-flag"></i>
-                            <span class="label label-danger"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 0 notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                    <span class="label label-danger"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 0 notifications</li>
                                     <li>
-                                        <a href="#">
-                                            <i class="glyphicon glyphicon-wrench text-red"></i> Under Implementation
-                                        </a>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="glyphicon glyphicon-wrench text-red"></i> Under Implementation
+                                                </a>
+                                            </li>
+                                        </ul>
+
                                     </li>
+                                    <li class="footer"><a href="#">View all</a></li>
                                 </ul>
-
                             </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                    }
+                        }
 
 
-                    @{
-                        int notificationCount = (int)System.Web.HttpContext.Current.Session[SessionNameConstants.UserNotificationCount];
-                        string Count = notificationCount.ToString();
-                    }
+                        @{
+                            int notificationCount = (int)System.Web.HttpContext.Current.Session[SessionNameConstants.UserNotificationCount];
+                            string Count = notificationCount.ToString();
+                        }
 
-                        @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleNotification ??  true)
+                        @if (((Models.BasicSetup.ViewModels.CompanySettingsViewModel)Session["CompanySettings"]).isVisibleNotification ?? true)
                         {
                     <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-bell" id="UNotificationIcon"></i>
-                            @if (notificationCount > 0)
-                            {
-                                <span class="label label-warning active new" id="UNotimessage"> @Count </span>
-                            }
-                            else
-                            {
-                                <span class="label label-warning active" id="UNotimessage"></span>
-                            }
+                            <li class="dropdown messages-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-bell" id="UNotificationIcon"></i>
+                                    @if (notificationCount > 0)
+                                    {
+                                        <span class="label label-warning active new" id="UNotimessage"> @Count </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-warning active" id="UNotimessage"></span>
+                                    }
 
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header Notification">You have @Count new notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                @*<div class="outerDiv">
-                                    <div id="ScrollContent">*@
-                                <ul class="menu" id="NotificMen">
-                                    <li style="text-align:center"><span class="glyphicon glyphicon-refresh Loading" style="font-size:large;display:none"></span></li>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header Notification">You have @Count new notifications</li>
                                     <li>
-                                        <!-- start message -->
-                                        @*<a href="#">
-                                                <div class="pull-left">
-                                                    <span class="Icon glyphicon glyphicon-th-list"></span>
-                                                </div>
-                                                <h4>
-                                                    Support Team
-                                                    <small><i class="glyphicon glyphicon-time"></i> 5 mins</small>
-                                                </h4>
-                                                <p id="UpdateBody">Why not buy a new awesome theme?</p>
-                                            </a>*@
-                                    </li><!-- end message -->
+                                        <!-- inner menu: contains the actual data -->
+                                        @*<div class="outerDiv">
+                                <div id="ScrollContent">*@
+                                        <ul class="menu" id="NotificMen">
+                                            <li style="text-align:center"><span class="glyphicon glyphicon-refresh Loading" style="font-size:large;display:none"></span></li>
+                                            <li>
+                                                <!-- start message -->
+                                                @*<a href="#">
+                                            <div class="pull-left">
+                                                <span class="Icon glyphicon glyphicon-th-list"></span>
+                                            </div>
+                                            <h4>
+                                                Support Team
+                                                <small><i class="glyphicon glyphicon-time"></i> 5 mins</small>
+                                            </h4>
+                                            <p id="UpdateBody">Why not buy a new awesome theme?</p>
+                                        </a>*@
+                                            </li><!-- end message -->
+                                        </ul>
+                                        @*</div>
+                                </div>*@
+                                    </li>
+                                    <li class="footer"><a href="/Notification/GetAllNotifications" id="footerNotification">See All Notifications</a></li>
                                 </ul>
-                                @*</div>
-                                    </div>*@
                             </li>
-                            <li class="footer"><a href="/Notification/GetAllNotifications" id="footerNotification">See All Notifications</a></li>
-                        </ul>
-                    </li>
-                    }
+                        }
 
-                    @{
-                        string Dd = (System.Configuration.ConfigurationManager.AppSettings["ProfilePic"]);
-                        string ImgSrc = Dd + User.Identity.Name + ".jpg";
-                    }
+                        @{
+                            string Dd = (System.Configuration.ConfigurationManager.AppSettings["ProfilePic"]);
+                            string ImgSrc = Dd + User.Identity.Name + ".jpg";
+                        }
 
-                    <li class="dropdown user user-menu">
+                        <li class="dropdown user user-menu">
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="@ImgSrc" class="user-image UserImage" alt="User Image" onerror="$(this).attr('src', '/Images/DefaultUser.png')" /> @User.Identity.Name </a>
-                        <ul class="dropdown-menu" role="menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="@ImgSrc" class="user-image UserImage" alt="User Image" onerror="$(this).attr('src', '/Images/DefaultUser.png')" /> @User.Identity.Name </a>
+                            <ul class="dropdown-menu" role="menu">
 
 
-                            @using Microsoft.AspNet.Identity
-                            @if (Request.IsAuthenticated)
-                            {
+                                @using Microsoft.AspNet.Identity
+                                @if (Request.IsAuthenticated)
+                                {
 
-                                <li class="user-header">
-                                    <img src="@ImgSrc" class="img-circle UserImage" alt="User Image" onerror="$(this).attr('src', '/Images/DefaultUser.png')" />
-                                    <p>
-                                        @User.Identity.Name
-                                    </p>
-                                </li>
+                                    <li class="user-header">
+                                        <img src="@ImgSrc" class="img-circle UserImage" alt="User Image" onerror="$(this).attr('src', '/Images/DefaultUser.png')" />
+                                        <p>
+                                            @User.Identity.Name
+                                        </p>
+                                    </li>
 
 
                                 <!-- Menu Body -->
-                                @*<li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </li>*@
+                                    @*<li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Sales</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </li>*@
 
                                  <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    @*<div class="pull-left">
-                                        <a href="/Account/Manage" class="btn btn-default btn-flat">Profile</a>
-                                    </div>*@
-                                    <div class="pull-right">
-                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Logout</a>
-                                        }
-                                    </div>
-                                </li>
+                                    <li class="user-footer">
+                                        @*<div class="pull-left">
+                                    <a href="/Account/Manage" class="btn btn-default btn-flat">Profile</a>
+                                </div>*@
+                                        <div class="pull-right">
+                                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Logout</a>
+                                            }
+                                        </div>
+                                    </li>
 
-                            }
-                            else
-                            {
+                                }
+                                else
+                                {
 
-                                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 
-                            }
+                                }
 
-                        </ul>
-                    </li>
-                </ul>
-
-
+                            </ul>
+                        </li>
+                    </ul>
 
 
-            </div>
+
+
+</div>
         </div>
     </div>
+
+ 
 
     <div class="container body-content">
 
         <div class="row">
-
+           
             <!-- content-wrapper -->
             <div class="col-md-12 content-wrapper">
 
-                <div class="row">
-                    <div class="col-md-4">
+                    
+                    <div class="row">
 
-                    </div>
-                    <div class="col-md-4">
-                        <div id="cusalert" class="alert" style="display:none">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <div id="cusalert" class="alert" style="display:none">
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
 
                         </div>
                     </div>
-                    <div class="col-md-4">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        @*@{var Temp = (string)TempData["CSEXC"];}*@
-                        @*@if (!string.IsNullOrEmpty((string)TempData["CSEXC"]))
-                            {
-                                <div class="alert alert-danger" role="alert" style="margin:0px;text-align:center" id="ExcAlert">
-                                    <a href="#" class="alert-link" id="ExcAlert"> @((string)TempData["CSEXC"]) </a>
-                                </div>
-                                <script type="text/javascript" id="CustomScript">
-                                    $(document).ready(function () {
-                                        $('a#ExcAlert').click(function () {
-                                            $('div#ExcAlert').animate({ height: 0, padding: 0}, 1500,"swing", function () {
-                                                $('div#ExcAlert').remove();
-                                            })
-                                        })
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*@{var Temp = (string)TempData["CSEXC"];}*@
+                            @*@if (!string.IsNullOrEmpty((string)TempData["CSEXC"]))
+                    {
+                        <div class="alert alert-danger" role="alert" style="margin:0px;text-align:center" id="ExcAlert">
+                            <a href="#" class="alert-link" id="ExcAlert"> @((string)TempData["CSEXC"]) </a>
+                        </div>
+                        <script type="text/javascript" id="CustomScript">
+                            $(document).ready(function () {
+                                $('a#ExcAlert').click(function () {
+                                    $('div#ExcAlert').animate({ height: 0, padding: 0}, 1500,"swing", function () {
+                                        $('div#ExcAlert').remove();
                                     })
-                                </script>
-                            }*@
-                    </div>
-                </div>
-                <!--Loading submit button Spinner and pageLoad spinner-->
-                @*<div class="loader"></div>
-                    <div id="loading">
-                        <div id="loadingcontent" style="">
-                            <p id="loadingspinner" style="">
-                                Please wait...
-                            </p>
+                                })
+                            })
+                        </script>
+                    }*@
                         </div>
-                    </div>*@
-
-                <!-- main -->
-                <div class="content">
-                    <div id="divRenderBody" class="main-content">
-
-                        @RenderBody()
-
                     </div>
-                    <!-- /main-content -->
+                    <!--Loading submit button Spinner and pageLoad spinner-->
+                    @*<div class="loader"></div>
+            <div id="loading">
+                <div id="loadingcontent" style="">
+                    <p id="loadingspinner" style="">
+                        Please wait...
+                    </p>
                 </div>
-                <!-- /main -->
-            </div>
+            </div>*@
+
+                    <!-- main -->
+                    <div class="content">
+                        <div id="divRenderBody" class="main-content">
+
+                            @RenderBody()
+
+                        </div>
+                        <!-- /main-content -->
+                    </div>
+                    <!-- /main -->
+                </div>
             <!-- /content-wrapper -->
         </div>
 
