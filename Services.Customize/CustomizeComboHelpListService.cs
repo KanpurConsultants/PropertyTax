@@ -10,11 +10,7 @@ namespace Services.Customize
 {
     public interface ICustomizeComboHelpListService : IDisposable
     {
-        ComboBoxPagedResult GetJobWorkers(string searchTerm, int pageSize, int pageNum);
-        ComboBoxPagedResult GetJobWorkersWithProcess(string searchTerm, int pageSize, int pageNum, int ProcessId);
-        ComboBoxResult GetJobWorkerById(int Id);
         ComboBoxResult GetPersonById(int Id);
-        List<ComboBoxResult> GetMultipleJobWorkers(string Id);
 
         ComboBoxPagedResult GetEmployees(string searchTerm, int pageSize, int pageNum);
         ComboBoxPagedResult GetEmployeesWithProcess(string searchTerm, int pageSize, int pageNum, int ProcessId);
@@ -46,15 +42,9 @@ namespace Services.Customize
         ComboBoxResult GetBinLocationById(int Id);
         ComboBoxPagedResult GetArea(string searchTerm, int pageSize, int pageNum);
         ComboBoxResult GetAreaById(int Id);
-        ComboBoxPagedResult GetCaste(string searchTerm, int pageSize, int pageNum);
-        ComboBoxResult GetCasteById(int Id);
-        ComboBoxPagedResult GetReligion(string searchTerm, int pageSize, int pageNum);
-        ComboBoxResult GetReligionById(int Id);
         ComboBoxPagedResult GetPersonRateGroup(string searchTerm, int pageSize, int pageNum);
         ComboBoxResult GetPersonRateGroupById(int Id);
 
-        ComboBoxPagedResult GetDiscountType(string searchTerm, int pageSize, int pageNum);
-        ComboBoxResult GetDiscountTypeById(int Id);
 
         ComboBoxPagedResult GetBillingType(string searchTerm, int pageSize, int pageNum);
         ComboBoxResult GetBillingTypeById(string Id);
@@ -81,25 +71,7 @@ namespace Services.Customize
             _unitOfWork = unitOfWork;
         }
 
-        public ComboBoxPagedResult GetJobWorkers(string searchTerm, int pageSize, int pageNum)
-        {
-            return new JobWorkerService(_unitOfWork).GetList(searchTerm, pageSize, pageNum);
-        }
 
-        public ComboBoxPagedResult GetJobWorkersWithProcess(string searchTerm, int pageSize, int pageNum, int ProcessId)
-        {
-            return new JobWorkerService(_unitOfWork).GetListWithProcess(searchTerm, pageSize, pageNum, ProcessId);
-        }
-
-        public ComboBoxResult GetJobWorkerById(int Id)
-        {
-            return new JobWorkerService(_unitOfWork).GetValue(Id);
-        }
-
-        public List<ComboBoxResult> GetMultipleJobWorkers(string Id)
-        {
-            return new JobWorkerService(_unitOfWork).GetListCsv(Id);
-        }
 
         public ComboBoxPagedResult GetEmployees(string searchTerm, int pageSize, int pageNum)
         {
@@ -252,23 +224,6 @@ namespace Services.Customize
             return new AreaService(_unitOfWork).GetValue(Id);
         }
 
-        public ComboBoxPagedResult GetCaste(string searchTerm, int pageSize, int pageNum)
-        {
-            return new CasteService(_unitOfWork).GetList(searchTerm, pageSize, pageNum);
-        }
-        public ComboBoxResult GetCasteById(int Id)
-        {
-            return new CasteService(_unitOfWork).GetValue(Id);
-        }
-
-        public ComboBoxPagedResult GetReligion(string searchTerm, int pageSize, int pageNum)
-        {
-            return new ReligionService(_unitOfWork).GetList(searchTerm, pageSize, pageNum);
-        }
-        public ComboBoxResult GetReligionById(int Id)
-        {
-            return new ReligionService(_unitOfWork).GetValue(Id);
-        }
 
         public ComboBoxPagedResult GetPersonRateGroup(string searchTerm, int pageSize, int pageNum)
         {
@@ -279,14 +234,7 @@ namespace Services.Customize
             return new PersonRateGroupService(_unitOfWork).GetValue(Id);
         }
 
-        public ComboBoxPagedResult GetDiscountType(string searchTerm, int pageSize, int pageNum)
-        {
-            return new DiscountTypeService(_unitOfWork).GetList(searchTerm, pageSize, pageNum);
-        }
-        public ComboBoxResult GetDiscountTypeById(int Id)
-        {
-            return new DiscountTypeService(_unitOfWork).GetValue(Id);
-        }
+
 
         public ComboBoxPagedResult GetBillingType(string searchTerm, int pageSize, int pageNum)
         {

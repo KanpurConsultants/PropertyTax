@@ -62,26 +62,7 @@ namespace Customize.App_Start
             container.RegisterType<IDataContext, ApplicationDbContext>(new PerRequestLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IRepository<JobOrderHeaderCharge>, Repository<JobOrderHeaderCharge>>();
-            container.RegisterType<IJobOrderHeaderChargeService, JobOrderHeaderChargeService>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IRepository<JobOrderLineCharge>, Repository<JobOrderLineCharge>>();
-            container.RegisterType<IJobOrderLineChargeService, JobOrderLineChargeService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobOrderHeader>, Repository<JobOrderHeader>>();
-            container.RegisterType<IJobOrderHeaderService, JobOrderHeaderService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobReceiveHeader>, Repository<JobReceiveHeader>>();
-            container.RegisterType<IJobReceiveHeaderService, JobReceiveHeaderService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobReceiveHeaderExtended>, Repository<JobReceiveHeaderExtended>>();
-            container.RegisterType<IJobReceiveHeaderExtendedService, JobReceiveHeaderExtendedService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRecipeHeaderService, RecipeHeaderService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<ISubRecipeService, SubRecipeService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IDyeingService, DyeingService>(new PerRequestLifetimeManager());
 
             container.RegisterType<IRepository<Godown>, Repository<Godown>>();
             container.RegisterType<IGodownService, GodownService>(new PerRequestLifetimeManager());
@@ -107,7 +88,6 @@ namespace Customize.App_Start
             container.RegisterType<IRepository<PaymentMode>, Repository<PaymentMode>>();
             container.RegisterType<IRepository<PaymentModeLedgerAccount>, Repository<PaymentModeLedgerAccount>>();
 
-            container.RegisterType<IRepository<CollectionSettings>, Repository<CollectionSettings>>();
 
             container.RegisterType<IRepository<LedgerHeader>, Repository<LedgerHeader>>();
             container.RegisterType<IRepository<LedgerLine>, Repository<LedgerLine>>();
@@ -115,39 +95,13 @@ namespace Customize.App_Start
 
             container.RegisterType<IRepository<Person>, Repository<Person>>();
             container.RegisterType<IRepository<ProductBuyer>, Repository<ProductBuyer>>();
-            container.RegisterType<IRepository<PersonExtended>, Repository<PersonExtended>>();
-            container.RegisterType<IRepository<ProductBuyerExtended>, Repository<ProductBuyerExtended>>();
 
             container.RegisterType<IPaymentModeService, PaymentModeService>(new PerRequestLifetimeManager());
             container.RegisterType<IPaymentModeLedgerAccountService, PaymentModeLedgerAccountService>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IPropertyHeaderService, PropertyHeaderService>(new PerRequestLifetimeManager());
-            container.RegisterType<IPropertyLineService, PropertyLineService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<ICollectionService, CollectionService>(new PerRequestLifetimeManager());
-            container.RegisterType<ICollectionSettingsService, CollectionSettingsService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<Caste>, Repository<Caste>>();
-            container.RegisterType<ICasteService, CasteService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<Dimension1Extended>, Repository<Dimension1Extended>>();
-            container.RegisterType<IDimension1ExtendedService, Dimension1ExtendedService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<DiscountType>, Repository<DiscountType>>();
-            container.RegisterType<IDiscountTypeService, DiscountTypeService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<Religion>, Repository<Religion>>();
-            container.RegisterType<IReligionService, ReligionService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<StockLine>, Repository<StockLine>>();
-            container.RegisterType<IRecipeLineService, RecipeLineService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobOrderSettings>, Repository<JobOrderSettings>>();
-            container.RegisterType<IJobOrderSettingsService, JobOrderSettingsService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobReceiveSettings>, Repository<JobReceiveSettings>>();
-            container.RegisterType<IJobReceiveSettingsService, JobReceiveSettingsService>(new PerRequestLifetimeManager());
-
+            
+            
+            
             container.RegisterType<IRepository<CostCenter>, Repository<CostCenter>>();
             container.RegisterType<ICostCenterService, CostCenterService>(new PerRequestLifetimeManager());
 
@@ -186,32 +140,8 @@ namespace Customize.App_Start
             container.RegisterType<IRepository<StockProcessBalance>, Repository<StockProcessBalance>>();
             container.RegisterType<IStockProcessBalanceService, StockProcessBalanceService>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IRepository<JobOrderHeaderStatus>, Repository<JobOrderHeaderStatus>>();
-            container.RegisterType<IJobOrderHeaderStatusService, JobOrderHeaderStatusService>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IRepository<JobOrderLineStatus>, Repository<JobOrderLineStatus>>();
-            container.RegisterType<IJobOrderLineStatusService, JobOrderLineStatusService>(new PerRequestLifetimeManager());
 
-            container.RegisterType<IRepository<JobReceiveLineStatus>, Repository<JobReceiveLineStatus>>();
-            container.RegisterType<IJobReceiveLineStatusService, JobReceiveLineStatusService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobOrderLineExtended>, Repository<JobOrderLineExtended>>();
-            container.RegisterType<IJobOrderLineExtendedService, JobOrderLineExtendedService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<StockLineExtended>, Repository<StockLineExtended>>();
-            container.RegisterType<IStockLineExtendedService, StockLineExtendedService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<PerkDocumentType>, Repository<PerkDocumentType>>();
-            container.RegisterType<IPerkDocumentTypeService, PerkDocumentTypeService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<Perk>, Repository<Perk>>();
-            container.RegisterType<IPerkService, PerkService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobOrderLine>, Repository<JobOrderLine>>();
-            container.RegisterType<IJobOrderLineService, JobOrderLineService>(new PerRequestLifetimeManager());
-
-            container.RegisterType<IRepository<JobReceiveLine>, Repository<JobReceiveLine>>();
-            container.RegisterType<IJobReceiveLineService, JobReceiveLineService>(new PerRequestLifetimeManager());
 
             container.RegisterType<IChargesCalculationService, ChargesCalculationService>(new PerRequestLifetimeManager());
 
@@ -236,71 +166,20 @@ namespace Customize.App_Start
 
             container.RegisterType<IRepository<Product>, Repository<Product>>();
 
-            Mapper.Initialize(m => { m.CreateMap<JobOrderSettings, JobOrderSettingsViewModel>();
-            m.CreateMap<JobOrderSettingsViewModel, JobOrderSettings>();
-            m.CreateMap<Perk, PerkViewModel>();
-            m.CreateMap<PerkViewModel, Perk>();
-            m.CreateMap<Person, DocumentUniqueId>();
+            Mapper.Initialize(m => {
+                m.CreateMap<PaymentMode, PaymentModeViewModel>();
+                m.CreateMap<Person, DocumentUniqueId>();
             m.CreateMap<LedgerHeader, DocumentUniqueId>();
-            m.CreateMap<CollectionViewModel, DocumentUniqueId>();
-            m.CreateMap<JobOrderHeaderViewModel, DocumentUniqueId>();
-            m.CreateMap<RecipeHeaderViewModel, DocumentUniqueId>();
-            m.CreateMap<PropertyHeaderViewModel, DocumentUniqueId>();
 
             m.CreateMap<PaymentModeViewModel, DocumentUniqueId>();
-            m.CreateMap<CollectionViewModel, DocumentUniqueId>();
-            m.CreateMap<DyeingViewModel, DocumentUniqueId>();
-            m.CreateMap<JobOrderHeader, DocumentUniqueId>();
-            m.CreateMap<JobOrderHeader, JobOrderHeaderViewModel>();
-            m.CreateMap<JobOrderHeaderViewModel, JobOrderHeader>();
-            m.CreateMap<JobOrderHeader, JobOrderHeader>();
-            m.CreateMap<JobReceiveHeader, DocumentUniqueId>();
-            m.CreateMap<PerkViewModel, JobOrderPerk>();
-            m.CreateMap<JobOrderPerk, JobOrderPerk>();
-            m.CreateMap<JobOrderLine, JobOrderLineViewModel>();
-            m.CreateMap<JobOrderLineViewModel, JobOrderLine>();
-            m.CreateMap<HeaderChargeViewModel, JobOrderHeaderCharge>().ForMember("Id", x => x.Ignore());
-            m.CreateMap<JobOrderHeaderCharge, HeaderChargeViewModel>().ForMember("Id", x => x.Ignore());
-            m.CreateMap<LineChargeViewModel, JobOrderLineCharge>().ForMember("Id", x => x.Ignore());
-            m.CreateMap<JobOrderLineCharge, LineChargeViewModel>().ForMember("Id", x => x.Ignore());
-            m.CreateMap<JobOrderLineCharge, JobOrderLineCharge>();
-            m.CreateMap<JobOrderHeaderCharge, JobOrderHeaderCharge>();
             m.CreateMap<HeaderChargeViewModel, HeaderChargeViewModel>();
             m.CreateMap<LineChargeViewModel, LineChargeViewModel>();
             m.CreateMap<CalculationFooterViewModel, HeaderChargeViewModel>();
             m.CreateMap<CalculationProductViewModel, LineChargeViewModel>();
-            m.CreateMap<JobOrderHeader, RecipeHeaderViewModel>();
-            m.CreateMap<RecipeHeaderViewModel, JobOrderHeader>();
-            m.CreateMap<JobReceiveHeader, DyeingViewModel>();
-            m.CreateMap<DyeingViewModel, JobReceiveHeader>();
-            m.CreateMap<StockLine, RecipeLineViewModel>();
-            m.CreateMap<RecipeLineViewModel, StockLine>();
             m.CreateMap<PaymentMode, PaymentModeViewModel>();
             m.CreateMap<PaymentModeViewModel, PaymentMode>();
             m.CreateMap<PaymentModeLedgerAccount, PaymentModeViewModel>();
             m.CreateMap<PaymentModeViewModel, PaymentModeLedgerAccount>();
-            m.CreateMap<CollectionViewModel, PropertyHeaderViewModel>();
-            m.CreateMap<PropertyHeaderViewModel, CollectionViewModel>();
-            m.CreateMap<Person, PropertyHeaderViewModel>();
-            m.CreateMap<PropertyHeaderViewModel, Person>();
-            m.CreateMap<BusinessEntity, PropertyHeaderViewModel>();
-            m.CreateMap<PropertyHeaderViewModel, BusinessEntity>();
-            m.CreateMap<PersonAddress, PropertyHeaderViewModel>();
-            m.CreateMap<PropertyHeaderViewModel, PersonAddress>();
-            m.CreateMap<LedgerAccount, PropertyHeaderViewModel>();
-            m.CreateMap<PropertyHeaderViewModel, LedgerAccount>();
-            m.CreateMap<PersonExtended, PropertyHeaderViewModel>();
-            m.CreateMap<PropertyHeaderViewModel, PersonExtended>();
-            m.CreateMap<ProductBuyer, PropertyLineViewModel>();
-            m.CreateMap<PropertyLineViewModel, ProductBuyer>();
-            m.CreateMap<ProductBuyerExtended, PropertyLineViewModel>();
-            m.CreateMap<PropertyLineViewModel, ProductBuyerExtended>();
-            m.CreateMap<LedgerHeader, CollectionViewModel>();
-            m.CreateMap<CollectionViewModel, LedgerHeader>();
-            m.CreateMap<LedgerLine, CollectionViewModel>();
-            m.CreateMap<CollectionViewModel, LedgerLine>();
-            m.CreateMap<CollectionSettings, CollectionSettingsViewModel>();
-            m.CreateMap<CollectionSettingsViewModel,CollectionSettings>();
             m.CreateMap<DocumentTypeAttribute, DocumentTypeAttributeViewModel>();
             });
         }

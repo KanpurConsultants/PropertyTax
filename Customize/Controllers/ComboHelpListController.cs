@@ -17,33 +17,13 @@ namespace Customize.Controllers
             _cusComboHelpListService = cusComboHelpListServ;
         }
 
-        public ActionResult GetJobWorker(string searchTerm, int pageSize, int pageNum)
-        {
-            return new JsonpResult
-            {
-                Data = _cusComboHelpListService.GetJobWorkers(searchTerm, pageSize, pageNum),
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
 
-        public ActionResult GetJobWorkersWithProcess(string searchTerm, int pageSize, int pageNum, int filter)
-        {
-            return new JsonpResult
-            {
-                Data = _cusComboHelpListService.GetJobWorkersWithProcess(searchTerm, pageSize, pageNum, filter),
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
 
-        public JsonResult SetSingleJobWorker(int Ids)
-        {
-            return Json(_cusComboHelpListService.GetJobWorkerById(Ids));
-        }
 
-        public JsonResult SetJobWorkers(string Ids)
-        {
-            return Json(_cusComboHelpListService.GetMultipleJobWorkers(Ids));
-        }
+
+
+
+
 
         public ActionResult GetEmployee(string searchTerm, int pageSize, int pageNum)
         {
@@ -237,31 +217,11 @@ namespace Customize.Controllers
             return Json(_cusComboHelpListService.GetAreaById(Ids));
         }
 
-        public ActionResult GetCaste(string searchTerm, int pageSize, int pageNum)
-        {
-            return new JsonpResult
-            {
-                Data = _cusComboHelpListService.GetCaste(searchTerm, pageSize, pageNum),
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
-        public JsonResult SetSingleCaste(int Ids)
-        {
-            return Json(_cusComboHelpListService.GetCasteById(Ids));
-        }
 
-        public ActionResult GetReligion(string searchTerm, int pageSize, int pageNum)
-        {
-            return new JsonpResult
-            {
-                Data = _cusComboHelpListService.GetReligion(searchTerm, pageSize, pageNum),
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
-        public JsonResult SetSingleReligion(int Ids)
-        {
-            return Json(_cusComboHelpListService.GetReligionById(Ids));
-        }
+
+
+
+
 
         public ActionResult GetPersonRateGroup(string searchTerm, int pageSize, int pageNum)
         {
@@ -297,18 +257,7 @@ namespace Customize.Controllers
 
 
 
-        public ActionResult GetDiscountType(string searchTerm, int pageSize, int pageNum)
-        {
-            return new JsonpResult
-            {
-                Data = _cusComboHelpListService.GetDiscountType(searchTerm, pageSize, pageNum),
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
-        public JsonResult SetSingleDiscountType(int Ids)
-        {
-            return Json(_cusComboHelpListService.GetDiscountTypeById(Ids));
-        }
+
 
         public ActionResult GetBillingType(string searchTerm, int pageSize, int pageNum)
         {

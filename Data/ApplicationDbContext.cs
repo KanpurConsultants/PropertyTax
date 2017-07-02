@@ -54,49 +54,69 @@ namespace Data.Customize
         //User Models
 
 
+        public DbSet<Month> Month { get; set; }
+        public DbSet<Sch_Admission> Sch_Admission { get; set; }
+        public DbSet<Sch_AdmissionQuota> Sch_AdmissionQuota { get; set; }
+        public DbSet<Sch_Class> Sch_Class { get; set; }
+        public DbSet<Sch_ClassFee> Sch_ClassFee { get; set; }
+        public DbSet<Sch_ClassFeeLine> Sch_ClassFeeLine { get; set; }
+        public DbSet<Sch_Facility> Sch_Facility { get; set; }
+        public DbSet<Sch_FacilityEnrollment> Sch_FacilityEnrollment { get; set; }
+
+        public DbSet<Sch_FacilityStopHeader> Sch_FacilityStopHeader { get; set; }
+        public DbSet<Sch_FacilityStop> Sch_FacilityStop { get; set; }
+        public DbSet<Sch_FacilitySubCategory> Sch_FacilitySubCategory { get; set; }
+
+
+
+        public DbSet<Sch_Fee> Sch_Fee { get; set; }
+        public DbSet<Sch_FeeDueHeader> Sch_FeeDueHeader { get; set; }
+        public DbSet<Sch_FeeDueLine> Sch_FeeDueLine { get; set; }
+        public DbSet<Sch_FeeReceiveHeader> Sch_FeeReceiveHeader { get; set; }
+        public DbSet<Sch_FeeReceiveLine> Sch_FeeReceiveLine { get; set; }
+
+        public DbSet<Sch_FeeRefundHeader> Sch_FeeRefundHeader { get; set; }
+        public DbSet<Sch_FeeRefundLine> Sch_FeeRefundLine { get; set; }
+
+        public DbSet<Sch_Program> Sch_Program { get; set; }
+        public DbSet<Sch_PromotionHeader> Sch_PromotionHeader { get; set; }
+
+        public DbSet<Sch_PromotionLine> Sch_PromotionLine { get; set; }
+
+        public DbSet<Sch_ClassSection> Sch_ClassSection { get; set; }
+
+        public DbSet<Sch_Stream> Sch_Stream { get; set; }
+
+        public DbSet<Sch_Student> Sch_Student { get; set; }
+
+
+
+
+
         public DbSet<PersonAddress> PersonAddress { get; set; }
         public DbSet<DocumentTypeAttribute> DocumentTypeAttribute { get; set; }
         public DbSet<PersonAttributes> PersonAttributes { get; set; }
         public DbSet<ReportHeader> ReportHeader { get; set; }
         public DbSet<ReportLine> ReportLine { get; set; }
-        public DbSet<CollectionSettings> CollectionSettings { get; set; }
 
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<PersonContact> PersonContacts { get; set; }
+
+        public DbSet<City> City { get; set; }
         public DbSet<LedgerAdj> LedgerAdj { get; set; }
-        public DbSet<Counter> Counter { get; set; }
         public DbSet<DocumentAttachment> DocumentAttachment { get; set; }
         public DbSet<PaymentMode> PaymentMode { get; set; }
         public DbSet<PaymentModeLedgerAccount> PaymentModeLedgerAccount { get; set; }
         public DbSet<Area> Area { get; set; }
         public DbSet<PersonRateGroup> PersonRateGroup { get; set; }
-        public DbSet<DiscountType> DiscountType { get; set; }
-        public DbSet<Caste> Caste { get; set; }
-        public DbSet<Religion> Religion { get; set; }
         public DbSet<Godown> Godown { get; set; }
         public DbSet<BinLocation> BinLocation { get; set; }
 
 
-        public DbSet<JobReceiveHeader> JobReceiveHeader { get; set; }
+        
 
-        public DbSet<JobReceiveHeaderExtended> JobReceiveHeaderExtended { get; set; }
-        public DbSet<JobReceiveLine> JobReceiveLine { get; set; }
-        public DbSet<JobReceiveLineStatus> JobReceiveLineStatus { get; set; }
-
-
-        public DbSet<JobOrderHeaderCharge> JobOrderHeaderCharge { get; set; }
-        public DbSet<JobOrderHeader> JobOrderHeader { get; set; }
-        public DbSet<JobOrderHeaderStatus> JobOrderHeaderStatus { get; set; }
-
-        public DbSet<JobOrderHeaderExtended> JobOrderHeaderExtended { get; set; }
-        public DbSet<JobOrderPerk> JobOrderPerk { get; set; }
-        public DbSet<JobOrderSettings> JobOrderSettings { get; set; }
-        public DbSet<JobOrderLine> JobOrderLine { get; set; }
-        public DbSet<JobOrderLineStatus> JobOrderLineStatus { get; set; }
-        public DbSet<JobOrderLineExtended> JobOrderLinExtended { get; set; }
-        public DbSet<StockLineExtended> StockLineExtended { get; set; }
         public DbSet<StockAdj> StockAdj { get; set; }
-        public DbSet<JobOrderLineCharge> JobOrderLineCharge { get; set; }
-        public DbSet<JobOrderBom> JobOrderBom { get; set; }
-
+        
 
         public DbSet<LedgerHeader> LedgerHeader { get; set; }
         public DbSet<LedgerLine> LedgerLine { get; set; }
@@ -117,20 +137,17 @@ namespace Data.Customize
         public DbSet<StockProcess> StockProcess { get; set; }
         public DbSet<StockProcessBalance> StockProcessBalance { get; set; }
         public DbSet<Person> Person { get; set; }
-        public DbSet<PersonExtended> PersonExtended { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductBuyer> ProductBuyer { get; set; }
-        public DbSet<ProductBuyerExtended> ProductBuyerExtended { get; set; }
         public DbSet<Unit> Unit { get; set; }
         public DbSet<UnitConversion> UnitConversion { get; set; }
         public DbSet<UnitConversionFor> UnitConversionFor { get; set; }
+        public DbSet<ViewStudentCurrentAdmission> ViewStudentCurrentAdmission { get; set; }
         public DbSet<ViewJobOrderBalance> ViewJobOrderBalance { get; set; }
         public DbSet<ViewProdOrderBalance> ViewProdOrderBalance { get; set; }
         public DbSet<ViewRecipeBalanceForSubRecipe> ViewRecipeBalanceForSubRecipe { get; set; }
         public DbSet<Dimension1> Dimension1 { get; set; }
-        public DbSet<Dimension1Extended> Dimension1Extended { get; set; }
         public DbSet<Dimension2> Dimension2 { get; set; }
-        public DbSet<JobWorker> JobWorker { get; set; }
         public DbSet<BusinessEntity> BusinessEntity { get; set; }
         public DbSet<PersonProcess> PersonProcess { get; set; }
         public DbSet<ProductUid> ProductUid { get; set; }
@@ -138,15 +155,9 @@ namespace Data.Customize
         public DbSet<GatePassHeader> GatePassHeader { get; set; }
         public DbSet<GatePassLine> GatePassLine { get; set; }
         public DbSet<ProductUidHeader> ProductUidHeader { get; set; }
-        public DbSet<PerkDocumentType> PerkDocumentType { get; set; }
-        public DbSet<Perk> Perk { get; set; }
         public DbSet<_Menu> _Menu { get; set; }
         public DbSet<_ReportHeader> _ReportHeader { get; set; }
         public DbSet<_ReportLine> _ReportLine { get; set; }
-        public DbSet<ProdOrderHeader> ProdOrderHeader { get; set; }
-        public DbSet<ProdOrderHeaderStatus> ProdOrderHeaderStatus { get; set; }
-        public DbSet<ProdOrderLine> ProdOrderLine { get; set; }
-        public DbSet<ProdOrderLineStatus> ProdOrderLineStatus { get; set; }
         public DbSet<Site> Site { get; set; }
         public DbSet<DocumentTypeTimeExtension> DocumentTypeTimeExtension { get; set; }
         public DbSet<DocumentTypeTimePlan> DocumentTypeTimePlan { get; set; }
